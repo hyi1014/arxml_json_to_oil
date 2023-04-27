@@ -1,0 +1,293 @@
+{
+    "AUTOSAR": {
+      "AR-PACKAGES": {
+        "AR-PACKAGE": {
+          "SHORT-NAME": "MICROSAR",
+          "AR-PACKAGES": {
+            "AR-PACKAGE": {
+              "SHORT-NAME": "Os_swc",
+              "AR-PACKAGES": {
+                "AR-PACKAGE": [
+                  {
+                    "SHORT-NAME": "DataTypes",
+                    "ELEMENTS": {
+                      "IMPLEMENTATION-DATA-TYPE": [
+                        {
+                          "SHORT-NAME": "TimeInMicrosecondsType",
+                          "CATEGORY": "TYPE_REFERENCE",
+                          "SW-DATA-DEF-PROPS": {
+                            "SW-DATA-DEF-PROPS-VARIANTS": {
+                              "SW-DATA-DEF-PROPS-CONDITIONAL": {
+                                "DATA-CONSTR-REF": "/MICROSAR/Os_swc/DataTypes/DataConstrs/TimeInMicrosecondsType_Constr",
+                                "IMPLEMENTATION-DATA-TYPE-REF": "/AUTOSAR_Platform/ImplementationDataTypes/uint32"
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "SHORT-NAME": "CounterType",
+                          "CATEGORY": "TYPE_REFERENCE",
+                          "SW-DATA-DEF-PROPS": {
+                            "SW-DATA-DEF-PROPS-VARIANTS": {
+                              "SW-DATA-DEF-PROPS-CONDITIONAL": {
+                                "DATA-CONSTR-REF": "/MICROSAR/Os_swc/DataTypes/DataConstrs/CounterType_Constr",
+                                "IMPLEMENTATION-DATA-TYPE-REF": "/AUTOSAR_Platform/ImplementationDataTypes/uint8"
+                              }
+                            }
+                          },
+                          "TYPE-EMITTER": "Os"
+                        }
+                      ]
+                    },
+                    "AR-PACKAGES": {
+                      "AR-PACKAGE": {
+                        "SHORT-NAME": "DataConstrs",
+                        "ELEMENTS": {
+                          "DATA-CONSTR": [
+                            {
+                              "SHORT-NAME": "TimeInMicrosecondsType_Constr",
+                              "DATA-CONSTR-RULES": {
+                                "DATA-CONSTR-RULE": {
+                                  "INTERNAL-CONSTRS": {
+                                    "LOWER-LIMIT": 0,
+                                    "UPPER-LIMIT": 4294967295
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "SHORT-NAME": "CounterType_Constr",
+                              "DATA-CONSTR-RULES": {
+                                "DATA-CONSTR-RULE": {
+                                  "INTERNAL-CONSTRS": {
+                                    "LOWER-LIMIT": 0,
+                                    "UPPER-LIMIT": 255
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "SHORT-NAME": "Interfaces",
+                    "ELEMENTS": {
+                      "CLIENT-SERVER-INTERFACE": {
+                        "SHORT-NAME": "Os_Service",
+                        "IS-SERVICE": true,
+                        "SERVICE-KIND": "OPERATING-SYSTEM",
+                        "OPERATIONS": {
+                          "CLIENT-SERVER-OPERATION": [
+                            {
+                              "SHORT-NAME": "GetCounterValue",
+                              "DESC": {
+                                "L-2": "This service reads the current count value of a counter (returning either the hardware timer ticks if counter is driven by hardware or the software ticks when user drives counter)."
+                              },
+                              "ARGUMENTS": {
+                                "ARGUMENT-DATA-PROTOTYPE": {
+                                  "SHORT-NAME": "Value",
+                                  "DESC": {
+                                    "L-2": ""
+                                  },
+                                  "TYPE-TREF": "/MICROSAR/Os_swc/DataTypes/TimeInMicrosecondsType",
+                                  "DIRECTION": "OUT"
+                                }
+                              },
+                              "POSSIBLE-ERROR-REFS": {
+                                "POSSIBLE-ERROR-REF": [
+                                  "/MICROSAR/Os_swc/Interfaces/Os_Service/E_OK",
+                                  "/MICROSAR/Os_swc/Interfaces/Os_Service/E_OS_ID"
+                                ]
+                              }
+                            },
+                            {
+                              "SHORT-NAME": "GetElapsedValue",
+                              "DESC": {
+                                "L-2": "This service gets the number of ticks between the current tick value and a previously read tick value."
+                              },
+                              "ARGUMENTS": {
+                                "ARGUMENT-DATA-PROTOTYPE": [
+                                  {
+                                    "SHORT-NAME": "Value",
+                                    "DESC": {
+                                      "L-2": ""
+                                    },
+                                    "TYPE-TREF": "/MICROSAR/Os_swc/DataTypes/TimeInMicrosecondsType",
+                                    "DIRECTION": "INOUT"
+                                  },
+                                  {
+                                    "SHORT-NAME": "ElapsedValue",
+                                    "DESC": {
+                                      "L-2": ""
+                                    },
+                                    "TYPE-TREF": "/MICROSAR/Os_swc/DataTypes/TimeInMicrosecondsType",
+                                    "DIRECTION": "OUT"
+                                  }
+                                ]
+                              },
+                              "POSSIBLE-ERROR-REFS": {
+                                "POSSIBLE-ERROR-REF": [
+                                  "/MICROSAR/Os_swc/Interfaces/Os_Service/E_OK",
+                                  "/MICROSAR/Os_swc/Interfaces/Os_Service/E_OS_ID",
+                                  "/MICROSAR/Os_swc/Interfaces/Os_Service/E_OS_VALUE"
+                                ]
+                              }
+                            }
+                          ]
+                        },
+                        "POSSIBLE-ERRORS": {
+                          "APPLICATION-ERROR": [
+                            {
+                              "SHORT-NAME": "E_OK",
+                              "ERROR-CODE": 0
+                            },
+                            {
+                              "SHORT-NAME": "E_OS_ACCESS",
+                              "ERROR-CODE": 1
+                            },
+                            {
+                              "SHORT-NAME": "E_OS_ID",
+                              "ERROR-CODE": 3
+                            },
+                            {
+                              "SHORT-NAME": "E_OS_STATE",
+                              "ERROR-CODE": 7
+                            },
+                            {
+                              "SHORT-NAME": "E_OS_VALUE",
+                              "ERROR-CODE": 8
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "SHORT-NAME": "ComponentTypes",
+                    "ELEMENTS": {
+                      "SERVICE-SW-COMPONENT-TYPE": {
+                        "SHORT-NAME": "Os_OsCore0_swc",
+                        "CATEGORY": "SERVICE_COMPONENT",
+                        "PORTS": {
+                          "P-PORT-PROTOTYPE": [
+                            {
+                              "SHORT-NAME": "OsService_OsCounter_10ms",
+                              "PROVIDED-INTERFACE-TREF": "/MICROSAR/Os_swc/Interfaces/Os_Service"
+                            },
+                            {
+                              "SHORT-NAME": "OsService_OsCounter_1ms",
+                              "PROVIDED-INTERFACE-TREF": "/MICROSAR/Os_swc/Interfaces/Os_Service"
+                            }
+                          ]
+                        },
+                        "INTERNAL-BEHAVIORS": {
+                          "SWC-INTERNAL-BEHAVIOR": {
+                            "SHORT-NAME": "Os_OsCore0_swcInternalBehavior",
+                            "EVENTS": {
+                              "OPERATION-INVOKED-EVENT": [
+                                {
+                                  "SHORT-NAME": "OpEventGetCounterValue_GetCounterValue_OsService_OsCounter_10ms",
+                                  "START-ON-EVENT-REF": "/MICROSAR/Os_swc/ComponentTypes/Os_OsCore0_swc/Os_OsCore0_swcInternalBehavior/GetCounterValue",
+                                  "OPERATION-IREF": {
+                                    "CONTEXT-P-PORT-REF": "/MICROSAR/Os_swc/ComponentTypes/Os_OsCore0_swc/OsService_OsCounter_10ms",
+                                    "TARGET-PROVIDED-OPERATION-REF": "/MICROSAR/Os_swc/Interfaces/Os_Service/GetCounterValue"
+                                  }
+                                },
+                                {
+                                  "SHORT-NAME": "OpEventGetElapsedValue_GetElapsedValue_OsService_OsCounter_10ms",
+                                  "START-ON-EVENT-REF": "/MICROSAR/Os_swc/ComponentTypes/Os_OsCore0_swc/Os_OsCore0_swcInternalBehavior/GetElapsedValue",
+                                  "OPERATION-IREF": {
+                                    "CONTEXT-P-PORT-REF": "/MICROSAR/Os_swc/ComponentTypes/Os_OsCore0_swc/OsService_OsCounter_10ms",
+                                    "TARGET-PROVIDED-OPERATION-REF": "/MICROSAR/Os_swc/Interfaces/Os_Service/GetElapsedValue"
+                                  }
+                                },
+                                {
+                                  "SHORT-NAME": "OpEventGetCounterValue_GetCounterValue_OsService_OsCounter_1ms",
+                                  "START-ON-EVENT-REF": "/MICROSAR/Os_swc/ComponentTypes/Os_OsCore0_swc/Os_OsCore0_swcInternalBehavior/GetCounterValue",
+                                  "OPERATION-IREF": {
+                                    "CONTEXT-P-PORT-REF": "/MICROSAR/Os_swc/ComponentTypes/Os_OsCore0_swc/OsService_OsCounter_1ms",
+                                    "TARGET-PROVIDED-OPERATION-REF": "/MICROSAR/Os_swc/Interfaces/Os_Service/GetCounterValue"
+                                  }
+                                },
+                                {
+                                  "SHORT-NAME": "OpEventGetElapsedValue_GetElapsedValue_OsService_OsCounter_1ms",
+                                  "START-ON-EVENT-REF": "/MICROSAR/Os_swc/ComponentTypes/Os_OsCore0_swc/Os_OsCore0_swcInternalBehavior/GetElapsedValue",
+                                  "OPERATION-IREF": {
+                                    "CONTEXT-P-PORT-REF": "/MICROSAR/Os_swc/ComponentTypes/Os_OsCore0_swc/OsService_OsCounter_1ms",
+                                    "TARGET-PROVIDED-OPERATION-REF": "/MICROSAR/Os_swc/Interfaces/Os_Service/GetElapsedValue"
+                                  }
+                                }
+                              ]
+                            },
+                            "HANDLE-TERMINATION-AND-RESTART": "NO-SUPPORT",
+                            "PORT-API-OPTIONS": {
+                              "PORT-API-OPTION": [
+                                {
+                                  "ENABLE-TAKE-ADDRESS": true,
+                                  "INDIRECT-API": false,
+                                  "PORT-ARG-VALUES": {
+                                    "PORT-DEFINED-ARGUMENT-VALUE": {
+                                      "VALUE": {
+                                        "NUMERICAL-VALUE-SPECIFICATION": {
+                                          "VALUE": "OsCounter_10ms"
+                                        }
+                                      },
+                                      "VALUE-TYPE-TREF": "/MICROSAR/Os_swc/DataTypes/CounterType"
+                                    }
+                                  },
+                                  "PORT-REF": "/MICROSAR/Os_swc/ComponentTypes/Os_OsCore0_swc/OsService_OsCounter_10ms"
+                                },
+                                {
+                                  "ENABLE-TAKE-ADDRESS": true,
+                                  "INDIRECT-API": false,
+                                  "PORT-ARG-VALUES": {
+                                    "PORT-DEFINED-ARGUMENT-VALUE": {
+                                      "VALUE": {
+                                        "NUMERICAL-VALUE-SPECIFICATION": {
+                                          "VALUE": "OsCounter_1ms"
+                                        }
+                                      },
+                                      "VALUE-TYPE-TREF": "/MICROSAR/Os_swc/DataTypes/CounterType"
+                                    }
+                                  },
+                                  "PORT-REF": "/MICROSAR/Os_swc/ComponentTypes/Os_OsCore0_swc/OsService_OsCounter_1ms"
+                                }
+                              ]
+                            },
+                            "RUNNABLES": {
+                              "RUNNABLE-ENTITY": [
+                                {
+                                  "SHORT-NAME": "GetCounterValue",
+                                  "MINIMUM-START-INTERVAL": 0,
+                                  "CAN-BE-INVOKED-CONCURRENTLY": true,
+                                  "SYMBOL": "GetCounterValue"
+                                },
+                                {
+                                  "SHORT-NAME": "GetElapsedValue",
+                                  "MINIMUM-START-INTERVAL": 0,
+                                  "CAN-BE-INVOKED-CONCURRENTLY": true,
+                                  "SYMBOL": "GetElapsedValue"
+                                }
+                              ]
+                            },
+                            "SUPPORTS-MULTIPLE-INSTANTIATION": false
+                          }
+                        }
+                      },
+                      "SWC-IMPLEMENTATION": {
+                        "SHORT-NAME": "Os_OsCore0_swcImplementation",
+                        "PROGRAMMING-LANGUAGE": "C",
+                        "BEHAVIOR-REF": "/MICROSAR/Os_swc/ComponentTypes/Os_OsCore0_swc/Os_OsCore0_swcInternalBehavior"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }

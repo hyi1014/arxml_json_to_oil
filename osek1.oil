@@ -1,0 +1,582 @@
+OSEK OSEK {
+
+    OsOS ExampleOS {
+        OsNumberOfCores = 2;
+        OsScalabilityClass = SC4;
+        OsStackMonitoring = TRUE;
+        OsStatus = EXTENDED;
+        OsUseResScheduler = FALSE;
+    };
+
+    OsHooks {
+        OsErrorHook = TRUE;
+        OsPreTaskHook = FALSE;
+        OsPostTaskHook = FALSE;
+        OsProtectionHook = FALSE;
+        OsStartupHook = FALSE;
+        OsShutdownHook = FALSE;
+    };
+
+    OsAppMode = AppMode1;
+
+    OsApplication app1 {
+        OsTrusted = TRUE;
+        OsTrustedApplicationWithProtection = TRUE;
+        OsAppEcucPartitionRef = PARTITION_1;
+        OsApplicationCoreRef = OS_CORE_ID_0;
+        OsAppTaskRef = T01;
+        OsAppTaskRef = T02;
+        OsAppTaskRef = T03;
+        OsRestartTask = T03;
+        OsAppCounterRef = counter2;
+        OsAppAlarmRef = alarm6;
+        OsAppAlarmRef = alarm7;
+        OsAppAlarmRef = alarm8;
+    };
+
+    OsApplication app2 {
+        OsTrusted = TRUE;
+        OsTrustedApplicationWithProtection = TRUE;
+        OsAppEcucPartitionRef = PARTITION_2;
+        OsApplicationCoreRef = OS_CORE_ID_1;
+        OsAppTaskRef = T11;
+        OsAppTaskRef = T12;
+        OsAppTaskRef = T13;
+        OsRestartTask = T13;
+        OsAppCounterRef = counter1;
+        OsAppAlarmRef = alarm1;
+        OsAppAlarmRef = alarm2;
+        OsAppAlarmRef = alarm3;
+    };
+
+    OsApplication app3 {
+        OsTrusted = FALSE;
+        OsAppEcucPartitionRef = PARTITION_3;
+        OsApplicationCoreRef = OS_CORE_ID_0;
+        OsAppTaskRef = T04;
+        OsAppTaskRef = T05;
+        OsAppTaskRef = T06;
+        OsRestartTask = T06;
+        OsAppCounterRef = counter4;
+        OsAppAlarmRef = alarm9;
+        OsAppAlarmRef = alarm10;
+    };
+    
+    OsApplication app4 {
+        OsTrusted = FALSE;
+        OsAppEcucPartitionRef = PARTITION_4;
+        OsApplicationCoreRef = OS_CORE_ID_1;
+        OsAppTaskRef = T14;
+        OsAppTaskRef = T15;
+        OsAppTaskRef = T16;
+        OsRestartTask = T16;
+        OsAppCounterRef = counter3;
+        OsAppAlarmRef = alarm4;
+        OsAppAlarmRef = alarm5;
+    };
+
+    OsTask T01 {
+        OsTaskPriority = 2;
+        OsTaskActivation = 1;
+        STACK = 512; // Not in AUTOSAR SPEC.
+        TYPE = EXTENDED; // Not in AUTOSAR SPEC.
+        OsTaskSchedule = FULL;
+        OsMemoryMappingCodeLocationRef = PARTITION_1;
+        OsTaskAutostart = TRUE {
+            OsTaskAppModeRef = AppMode1;
+        }
+        OsTaskEventRef = event2;
+        OsTaskEventRef = event3;
+        OsTaskTimingProtection = {
+            OsTaskExecutionBudget = 0.05;
+            OsTaskAllInterruptLockBudget = 0.02;
+            OsTaskOsInterruptLockBudget = 0.02;
+            OsTaskTimeFrame = 0.01;
+        }
+    }
+
+    OsTask T02 {
+        OsTaskPriority = 3;
+        OsTaskActivation = 1;
+        STACK = 512;
+        TYPE = EXTENDED;
+        OsTaskSchedule = FULL;
+        OsMemoryMappingCodeLocationRef = PARTITION_1;
+        OsTaskAutostart = FALSE;
+        OsTaskAccessingApplication = app4;
+        OsTaskEventRef = event3;
+        OsTaskTimingProtection = {
+            OsTaskExecutionBudget = 0.05;
+            OsTaskAllInterruptLockBudget = 0.02;
+            OsTaskOsInterruptLockBudget = 0.03;
+            OsTaskTimeFrame = 0.02;
+            OsTaskResourceLock = {
+                OsTaskResourceLockResourceRef = resource1;
+                OsTaskResourceLockBudget = 0.02;
+            }
+            OsTaskResourceLock = {
+                OsTaskResourceLockResourceRef = resource2;
+                OsTaskResourceLockBudget = 0.03;
+            }
+            OsTaskResourceLock = {
+                OsTaskResourceLockResourceRef = resource3;
+                OsTaskResourceLockBudget = 0.01;
+            }
+        }
+    }
+
+    OsTask T03 {
+        OsTaskPriority = 1;
+        OsTaskActivation = 10;
+        STACK = 512;
+        TYPE = BASIC;
+        OsTaskSchedule = FULL;
+        OsMemoryMappingCodeLocationRef = PARTITION_1;
+        OsTaskAutostart = FALSE;
+        OsTaskAccessingApplication = app3;
+        OsTaskEventRef = event3;
+        OsTaskTimingProtection = {
+            OsTaskExecutionBudget = 0.05;
+            OsTaskAllInterruptLockBudget = 0.02;
+            OsTaskOsInterruptLockBudget = 0.04;
+            OsTaskTimeFrame = 0.02;
+        }
+    }
+    
+
+    OsTask T04 {
+        OsTaskPriority = 2;
+        OsTaskActivation = 1;
+        STACK = 512;
+        TYPE = EXTENDED;
+        OsTaskSchedule = FULL;
+        OsMemoryMappingCodeLocationRef = PARTITION_3;
+        OsTaskAutostart = FALSE;
+        OsTaskAccessingApplication = app4;
+        OsTaskEventRef = event2;
+        OsTaskEventRef = event3;
+        OsTaskTimingProtection = {
+            OsTaskExecutionBudget = 0.05;
+            OsTaskAllInterruptLockBudget = 0.02;
+            OsTaskOsInterruptLockBudget = 0.02;
+            OsTaskTimeFrame = 0.03;
+        }
+    }
+
+    OsTask T05 {
+        OsTaskPriority = 3;
+        OsTaskActivation = 1;
+        STACK = 512;
+        TYPE = EXTENDED;
+        OsTaskSchedule = FULL;
+        OsMemoryMappingCodeLocationRef = PARTITION_3;
+        OsTaskAutostart = FALSE;
+        OsTaskAccessingApplication = app1;
+        OsTaskEventRef = event3;
+        OsTaskTimingProtection = {
+            OsTaskExecutionBudget = 0.05;
+            OsTaskAllInterruptLockBudget = 0.03;
+            OsTaskOsInterruptLockBudget = 0.03;
+            OsTaskTimeFrame = 0.04;
+            OsTaskResourceLock = {
+                OsTaskResourceLockResourceRef = resource1;
+                OsTaskResourceLockBudget = 0.03;
+            }
+            OsTaskResourceLock = {
+                OsTaskResourceLockResourceRef = resource2;
+                OsTaskResourceLockBudget = 0.03;
+            }
+            OsTaskResourceLock = {
+                OsTaskResourceLockResourceRef = resource3;
+                OsTaskResourceLockBudget = 0.01;
+            }
+        }
+    }
+
+    OsTask T06 {
+        OsTaskPriority = 1;
+        OsTaskActivation = 10;
+        STACK = 512;
+        TYPE = BASIC;
+        OsTaskSchedule = FULL;
+        OsMemoryMappingCodeLocationRef = PARTITION_1;
+        OsTaskAutostart = FALSE;
+        OsTaskAccessingApplication = app1;
+        OsTaskEventRef = event3;
+        OsTaskTimingProtection = {
+            OsTaskExecutionBudget = 0.05;
+            OsTaskAllInterruptLockBudget = 0.01;
+            OsTaskOsInterruptLockBudget = 0.02;
+            OsTaskTimeFrame = 0.02;
+        }
+    }
+
+    OsTask T11 {
+        OsTaskPriority = 2;
+        OsTaskActivation = 1;
+        STACK = 512;
+        TYPE = EXTENDED;
+        OsTaskSchedule = FULL;
+        OsMemoryMappingCodeLocationRef = PARTITION_2;
+        OsTaskAutostart = TRUE {
+            OsTaskAppModeRef = AppMode1;
+        }
+        OsTaskEventRef = event1;
+        OsTaskEventRef = event2;
+        OsTaskTimingProtection = {
+            OsTaskExecutionBudget = 0.05;
+            OsTaskAllInterruptLockBudget = 0.02;
+            OsTaskOsInterruptLockBudget = 0.02;
+            OsTaskTimeFrame = 0.01;
+        }
+    }
+
+    OsTask T12 {
+        OsTaskPriority = 1;
+        OsTaskActivation = 10;
+        STACK = 512;
+        TYPE = BASIC;
+        OsTaskSchedule = FULL;
+        OsMemoryMappingCodeLocationRef = PARTITION_2;
+        OsTaskAutostart = FALSE;
+        OsTaskAccessingApplication = app3;
+        OsTaskTimingProtection = {
+            OsTaskExecutionBudget = 0.05;
+            OsTaskAllInterruptLockBudget = 0.02;
+            OsTaskOsInterruptLockBudget = 0.04;
+            OsTaskTimeFrame = 0.03;
+        }
+    }
+
+    OsTask T13 {
+        OsTaskPriority = 3;
+        OsTaskActivation = 1;
+        STACK = 512;
+        TYPE = BASIC;
+        OsTaskSchedule = FULL;
+        OsMemoryMappingCodeLocationRef = PARTITION_2;
+        OsTaskAutostart = FALSE;
+        OsTaskAccessingApplication = app4;
+        OsTaskTimingProtection = {
+            OsTaskExecutionBudget = 0.05;
+            OsTaskAllInterruptLockBudget = 0.02;
+            OsTaskOsInterruptLockBudget = 0.03;
+            OsTaskTimeFrame = 0.04;
+            OsTaskResourceLock = {
+                OsTaskResourceLockResourceRef = resource4;
+                OsTaskResourceLockBudget = 0.02;
+            }
+            OsTaskResourceLock = {
+                OsTaskResourceLockResourceRef = resource5;
+                OsTaskResourceLockBudget = 0.03;
+            }
+            OsTaskResourceLock = {
+                OsTaskResourceLockResourceRef = resource6;
+                OsTaskResourceLockBudget = 0.01;
+            }
+        }
+    }
+    
+
+    OsTask T14 {
+        OsTaskPriority = 2;
+        OsTaskActivation = 1;
+        STACK = 512;
+        TYPE = EXTENDED;
+        OsTaskSchedule = FULL;
+        OsMemoryMappingCodeLocationRef = PARTITION_4;
+        OsTaskAutostart = FALSE;
+        OsTaskAccessingApplication = app2;
+        OsTaskEventRef = event1;
+        OsTaskEventRef = event2;
+        OsTaskTimingProtection = {
+            OsTaskExecutionBudget = 0.05;
+            OsTaskAllInterruptLockBudget = 0.02;
+            OsTaskOsInterruptLockBudget = 0.02;
+            OsTaskTimeFrame = 0.02;
+        }
+    }
+
+    OsTask T15 {
+        OsTaskPriority = 1;
+        OsTaskActivation = 10;
+        STACK = 512;
+        TYPE = BASIC;
+        OsTaskSchedule = FULL;
+        OsMemoryMappingCodeLocationRef = PARTITION_4;
+        OsTaskAutostart = FALSE;
+        OsTaskAccessingApplication = app3;
+        OsTaskTimingProtection = {
+            OsTaskExecutionBudget = 0.05;
+            OsTaskAllInterruptLockBudget = 0.01;
+            OsTaskOsInterruptLockBudget = 0.02;
+            OsTaskTimeFrame = 0.02;
+        }
+    }
+
+    OsTask T16 {
+        OsTaskPriority = 3;
+        OsTaskActivation = 1;
+        STACK = 512;
+        TYPE = BASIC;
+        OsTaskSchedule = FULL;
+        OsMemoryMappingCodeLocationRef = PARTITION_4;
+        OsTaskAutostart = FALSE;
+        OsTaskAccessingApplication = app2;
+        OsTaskTimingProtection = {
+            OsTaskExecutionBudget = 0.05;
+            OsTaskAllInterruptLockBudget = 0.03;
+            OsTaskOsInterruptLockBudget = 0.03;
+            OsTaskTimeFrame = 0.02;
+            OsTaskResourceLock = {
+                OsTaskResourceLockResourceRef = resource4;
+                OsTaskResourceLockBudget = 0.03;
+            }
+            OsTaskResourceLock = {
+                OsTaskResourceLockResourceRef = resource5;
+                OsTaskResourceLockBudget = 0.03;
+            }
+            OsTaskResourceLock = {
+                OsTaskResourceLockResourceRef = resource6;
+                OsTaskResourceLockBudget = 0.01;
+            }
+        }
+    }
+
+    OsResource resource1 {
+        OsResourceProperty = STANDARD;
+        OsResourceAccessingApplication = app1;
+        OsResourceAccessingApplication = app3;
+    }
+
+    OsResource resource2 {
+        OsResourceProperty = STANDARD;
+        OsResourceAccessingApplication = app1;
+        OsResourceAccessingApplication = app3;
+    }
+
+    OsResource resource3 {
+        OsResourceProperty = STANDARD;
+        OsResourceAccessingApplication = app1;
+        OsResourceAccessingApplication = app3;
+    }
+
+    OsResource resource4 {
+        OsResourceProperty = STANDARD;
+        OsResourceAccessingApplication = app2;
+        OsResourceAccessingApplication = app4;
+    }
+
+    OsResource resource5 {
+        OsResourceProperty = STANDARD;
+        OsResourceAccessingApplication = app2;
+        OsResourceAccessingApplication = app4;
+    }
+
+    OsResource resource6 {
+        OsResourceProperty = STANDARD;
+        OsResourceAccessingApplication = app2;
+        OsResourceAccessingApplication = app4;
+    }
+
+    OsEvent event1 {
+        OsEventMask = AUTO;
+    }
+
+    OsEvent event2 {
+        OsEventMask = AUTO;
+    }
+
+    OsEvent event3 {
+        OsEventMask = AUTO;
+    }
+
+    OsAlarm alarm1 {
+        OsAlarmCounterRef = counter1;
+        OsAlarmAction = OsAlarmActivateTask {
+            OsAlarmActivateTaskRef = T11;
+        }
+        OsAlarmAutostart = TRUE {
+            OsAlarmAlarmTime = 100;
+            OsAlarmAutostartType = RELATIVE; // Our kernel can't support ABSOLUTE. You can try to support that.
+            OsAlarmCycleTime = 0;
+            OsAlarmAppModeRef = AppMode1;
+        }
+    }
+
+    OsAlarm alarm2 {
+        OsAlarmAccessingApplication = app1;
+        OsAlarmCounterRef = counter1;
+        OsAlarmAction = OsAlarmActivateTask {
+            OsAlarmActivateTaskRef = T12;
+        }
+        OsAlarmAutostart = FALSE;
+    }
+
+    OsAlarm alarm3 {
+        OsAlarmCounterRef = counter1;
+        OsAlarmAction = OsAlarmSetEvent {
+            OsAlarmSetEventRef = event1;
+            OsAlarmSetEventTaskRef = T12;
+        }
+        OsAlarmAutostart = FALSE;
+    }
+
+    OsAlarm alarm4 {
+        OsAlarmAccessingApplication = app2;
+        OsAlarmCounterRef = counter3;
+        OsAlarmAction = OsAlarmSetEvent {
+            OsAlarmSetEventRef = event2;
+            OsAlarmSetEventTaskRef = T14;
+        }
+        OsAlarmAutostart = FALSE;
+    }
+
+    OsAlarm alarm5 {
+        OsAlarmCounterRef = counter3;
+        OsAlarmAction = OsAlarmActivateTask {
+            OsAlarmActivateTaskRef = T16;
+        }
+        OsAlarmAutostart = FALSE;
+    }
+
+    OsAlarm alarm6 {
+        OsAlarmCounterRef = counter2;
+        OsAlarmAction = OsAlarmActivateTask {
+            OsAlarmActivateTaskRef = T03;
+        }
+        OsAlarmAutostart = FALSE;
+    }
+
+    OsAlarm alarm7 {
+        OsAlarmAccessingApplication = app2;
+        OsAlarmCounterRef = counter2;
+        OsAlarmAction = OsAlarmActivateTask {
+            OsAlarmActivateTaskRef = T01;
+        }
+        OsAlarmAutostart = FALSE;
+    }
+
+    OsAlarm alarm8 {
+        OsAlarmCounterRef = counter2;
+        OsAlarmAction = OsAlarmSetEvent {
+            OsAlarmSetEventRef = event2;
+            OsAlarmSetEventTaskRef = T01;
+        }
+        OsAlarmAutostart = FALSE;
+    }
+
+    OsAlarm alarm9 {
+        OsAlarmCounterRef = counter4;
+        OsAlarmAction = OsAlarmActivateTask {
+            OsAlarmActivateTaskRef = T04;
+        }
+        OsAlarmAutostart = TRUE {
+            OsAlarmAlarmTime = 100;
+            OsAlarmAutostartType = RELATIVE; // Our kernel can't support ABSOLUTE. You can try to support that.
+            OsAlarmCycleTime = 100;
+            OsAlarmAppModeRef = AppMode1;
+        }
+    }
+
+    OsAlarm alarm10 {
+        OsAlarmAccessingApplication = app1;
+        OsAlarmCounterRef = counter4;
+        OsAlarmAction = OsAlarmSetEvent {
+            OsAlarmSetEventRef = event1;
+            OsAlarmSetEventTaskRef = T05;
+        }
+        OsAlarmAutostart = FALSE;
+    }
+
+    OsCounter counter1 {
+        OsCounterMaxAllowedValue = 500;
+        OsCounterMinCycle = 10;
+        OsCounterTicksPerBase = 10;
+        OsCounterType = HARDWARE;
+    }
+
+    OsCounter counter2 {
+        OsCounterMaxAllowedValue = 500;
+        OsCounterMinCycle = 10;
+        OsCounterTicksPerBase = 10;
+        OsCounterType = HARDWARE;
+    }
+
+    OsCounter counter3 {
+        OsCounterMaxAllowedValue = 500;
+        OsCounterMinCycle = 10;
+        OsCounterTicksPerBase = 10;
+        OsCounterType = HARDWARE;
+    }
+
+    OsCounter counter4 {
+        OsCounterMaxAllowedValue = 500;
+        OsCounterMinCycle = 10;
+        OsCounterTicksPerBase = 10;
+        OsCounterType = HARDWARE;
+    }
+
+    OsSpinlock spinlock1 {
+        OsSpinlockLockMethod = LOCK_NOTHING;
+        OsSpinlockAccessingApplication = app1;
+        OsSpinlockAccessingApplication = app2;
+        OsSpinlockSuccessor = spinlock2;
+    }
+
+    OsSpinlock spinlock2 {
+        OsSpinlockLockMethod = LOCK_ALL_INTERRUPTS;
+        OsSpinlockAccessingApplication = app1;
+        OsSpinlockAccessingApplication = app2;
+        OsSpinlockSuccessor = spinlock6;
+    }
+
+    OsSpinlock spinlock3 {
+        OsSpinlockLockMethod = LOCK_ALL_INTERRUPTS;
+        OsSpinlockAccessingApplication = app1;
+        OsSpinlockAccessingApplication = app2;
+        OsSpinlockAccessingApplication = app3;
+        OsSpinlockAccessingApplication = app4;
+        OsSpinlockSuccessor = spinlock5;
+    }
+
+    OsSpinlock spinlock4 {
+        OsSpinlockLockMethod = LOCK_WITH_RES_SCHEDULER;
+        OsSpinlockAccessingApplication = app1;
+        OsSpinlockAccessingApplication = app2;
+        OsSpinlockAccessingApplication = app3;
+        OsSpinlockAccessingApplication = app4;
+    }
+
+    OsSpinlock spinlock5 {
+        OsSpinlockLockMethod = LOCK_CAT2_INTERRUPTS;
+        OsSpinlockAccessingApplication = app1;
+        OsSpinlockAccessingApplication = app2;
+        OsSpinlockAccessingApplication = app3;
+        OsSpinlockAccessingApplication = app4;
+        OsSpinlockSuccessor = spinlock4;
+    }
+
+    OsSpinlock spinlock6 {
+        OsSpinlockLockMethod = LOCK_CAT2_INTERRUPTS;
+        OsSpinlockAccessingApplication = app1;
+        OsSpinlockAccessingApplication = app2;
+        OsSpinlockSuccessor = spinlock8;
+    }
+
+    OsSpinlock spinlock7 {
+        OsSpinlockLockMethod = LOCK_NOTHING;
+        OsSpinlockAccessingApplication = app1;
+        OsSpinlockAccessingApplication = app2;
+        OsSpinlockAccessingApplication = app3;
+        OsSpinlockAccessingApplication = app4;
+        OsSpinlockSuccessor = spinlock3;
+    }
+
+    OsSpinlock spinlock8 {
+        OsSpinlockLockMethod = LOCK_WITH_RES_SCHEDULER;
+        OsSpinlockAccessingApplication = app1;
+        OsSpinlockAccessingApplication = app2;
+        OsSpinlockSuccessor = spinlock7;
+    }
+};
