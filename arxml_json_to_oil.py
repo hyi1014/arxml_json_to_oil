@@ -39,7 +39,7 @@ def recursive_parse_val(elements, num_tabs):
                 for j in range(0, len(elements[elements_keys[i]])):
                     recursive_parse_val(elements[elements_keys[i]][j], num_tabs)
         print_prefix_tabs("}", num_tabs)
-    elif(elements_keys[0] != "DEFINITION-REF" or elements_keys[1] != "VALUE"):
+    elif("DEFINITION-REF" not in elements_keys and ("VALUE" not in elements_keys or ("VALUE-REF" not in elements_keys))):
         for i in range(0, len(elements_keys)):
             if(type(elements[elements_keys[i]]) is dict):
                 recursive_parse_val(elements[elements_keys[i]], num_tabs)
@@ -47,7 +47,10 @@ def recursive_parse_val(elements, num_tabs):
                 for j in range(0, len(elements[elements_keys[i]])):
                     recursive_parse_val(elements[elements_keys[i]][j], num_tabs)
     else:
-        print_prefix_tabs(str(elements[elements_keys[0]]).split("/")[-1] + " = " + str(elements[elements_keys[1]]), num_tabs)
+        if("VALUE" in elements_keys):
+            print_prefix_tabs(str(elements["DEFINITION-REF"]).split("/")[-1] + " = " + str(elements["VALUE"]), num_tabs)
+        elif("VALUE-REF" in elements_keys):
+            print_prefix_tabs(str(elements["DEFINITION-REF"]).split("/")[-1] + " = " + str(elements["VALUE-REF"]).split("/")[-1], num_tabs)
 
 
 

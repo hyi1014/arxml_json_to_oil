@@ -4,8 +4,11 @@ OsCounter OsCounter_1ms {
 	OsSecondsPerTick = 0.001
 	OsCounterTicksPerBase = 60000
 	OsCounterType = HARDWARE
+	OsCounterAccessingApplication = SystemApplication_OsCore0
 	OsDriver OsDriver {
 		OsDriverHighResolution = False
+		OsDriverHardwareTimerChannelRef = OSTM0
+		OsDriverIsrRef = CounterIsr_SystemTimer
 	}
 }
 OsOS OsOS {
@@ -26,6 +29,8 @@ OsOS OsOS {
 	OsFpuUsage = NONE
 	OsScalabilityClass = SC1
 	OsUseCase = STANDARD
+	OsMasterCore = OsCore0
+	OsSystemTimer = OsCounter_1ms
 	OsHooks OsHooks {
 		OsErrorHook = True
 		OsPostTaskHook = False
@@ -37,82 +42,144 @@ OsOS OsOS {
 		OsStack OsCore0_Error {
 			OsStackSize = 1024
 			OsStackType = CORE_ERROR_STACK
+			OsStackCore = OsCore0
+			OsStackUser = OsCore0
 		}
 		OsStack OsCore0_Init {
 			OsStackSize = 1024
 			OsStackType = CORE_INIT_STACK
+			OsStackCore = OsCore0
+			OsStackUser = OsCore0
 		}
 		OsStack OsCore0_Kernel {
 			OsStackSize = 1024
 			OsStackType = CORE_KERNEL_STACK
+			OsStackCore = OsCore0
+			OsStackUser = OsCore0
 		}
 		OsStack OsCore0_Isr_Core {
 			OsStackSize = 2048
 			OsStackType = ISR_SHARED_CORE_STACK
+			OsStackCore = OsCore0
+			OsStackUser = CounterIsr_SystemTimer
+			OsStackUser = INTIIC0EE
+			OsStackUser = INTIIC0RI
+			OsStackUser = INTIIC0TEI
+			OsStackUser = ADC0_SG1_CAT2_ISR
+			OsStackUser = CanIsrStatus_0
+			OsStackUser = CanIsrTx_0
+			OsStackUser = EXT_INTP_CH07_CAT2_ISR
+			OsStackUser = SPI_CSIH0_TIR_CAT2_ISR
+			OsStackUser = SPI_CSIH3_TIR_CAT2_ISR
+			OsStackUser = WDG_59_DRIVERA_TRIGGERFUNCTION_CAT2_ISR
+			OsStackUser = SPI_CSIH2_TIR_CAT2_ISR
+			OsStackUser = EXT_INTP_CH03_CAT2_ISR
+			OsStackUser = TAUD0_CH00_CAT2_ISR
+			OsStackUser = IRQDmaChannel2TransmitComplete
+			OsStackUser = IRQDmaChannel5TransmitComplete
+			OsStackUser = IRQDmaChannel5ReceiveComplete
+			OsStackUser = TAUD0_CH02_CAT2_ISR
+			OsStackUser = TAUD0_CH04_CAT2_ISR
+			OsStackUser = TAUD0_CH01_CAT2_ISR
+			OsStackUser = CanIsrGlobalRxFifo_0
+			OsStackUser = CounterIsr_OsCounter_10ms
+			OsStackUser = ADC1_SG1_CAT2_ISR
 		}
 		OsStack OsCore0_Task_Prio4294967295 {
 			OsStackSize = 2048
 			OsStackType = TASK_SHARED_PRIORITY_STACK
+			OsStackCore = OsCore0
+			OsStackUser = IdleTask_OsCore0
 		}
 		OsStack OsTask_BswMainFunctions {
 			OsStackSize = 2048
 			OsStackType = TASK_EXTENDED_STACK
+			OsStackCore = OsCore0
+			OsStackUser = OsTask_BswMainFunctions
 		}
 		OsStack OsCore0_Task_Prio5 {
 			OsStackSize = 2048
 			OsStackType = TASK_SHARED_PRIORITY_STACK
+			OsStackCore = OsCore0
+			OsStackUser = OsTask_Background
 		}
 		OsStack OsCore0_Task_Prio1001 {
 			OsStackSize = 2048
 			OsStackType = TASK_SHARED_PRIORITY_STACK
+			OsStackCore = OsCore0
+			OsStackUser = Default_Init_Task
 		}
 		OsStack OsTask_ApplInitDeInit {
 			OsStackSize = 2048
 			OsStackType = TASK_EXTENDED_STACK
+			OsStackCore = OsCore0
+			OsStackUser = OsTask_ApplInitDeInit
 		}
 		OsStack OsTask_ApplMainFunctions {
 			OsStackSize = 2048
 			OsStackType = TASK_EXTENDED_STACK
+			OsStackCore = OsCore0
+			OsStackUser = OsTask_ApplMainFunctions
 		}
 		OsStack OsTask_Communication {
 			OsStackSize = 2048
 			OsStackType = TASK_EXTENDED_STACK
+			OsStackCore = OsCore0
+			OsStackUser = OsTask_Communication
 		}
 		OsStack OsTask_Dimming {
 			OsStackSize = 3072
 			OsStackType = TASK_EXTENDED_STACK
+			OsStackCore = OsCore0
+			OsStackUser = OsTask_Dimming
 		}
 		OsStack OsTask_SelfDiagnostics {
 			OsStackSize = 2048
 			OsStackType = TASK_EXTENDED_STACK
+			OsStackCore = OsCore0
+			OsStackUser = OsTask_SelfDiagnostics
 		}
 		OsStack OsTask_Touch {
 			OsStackSize = 2048
 			OsStackType = TASK_EXTENDED_STACK
+			OsStackCore = OsCore0
+			OsStackUser = OsTask_Touch
 		}
 		OsStack OsTask_ApplTimedInitDeInit {
 			OsStackSize = 2048
 			OsStackType = TASK_EXTENDED_STACK
+			OsStackCore = OsCore0
+			OsStackUser = OsTask_ApplTimedInitDeInit
 		}
 		OsStack OsTask_ApplVerify {
 			OsStackSize = 1024
 			OsStackType = TASK_EXTENDED_STACK
+			OsStackCore = OsCore0
+			OsStackUser = OsTask_ApplVerify
 		}
 		OsStack OsCore0_Shutdown {
 			OsStackSize = 1024
 			OsStackType = CORE_SHUTDOWN_STACK
+			OsStackCore = OsCore0
+			OsStackUser = OsCore0
 		}
 		OsStack OsTask_DcmSessionChanges {
 			OsStackSize = 3072
 			OsStackType = TASK_EXTENDED_STACK
+			OsStackCore = OsCore0
+			OsStackUser = OsTask_DcmSessionChanges
 		}
 		OsStack OsTask_NvmAccess {
 			OsStackSize = 1024
 			OsStackType = TASK_EXTENDED_STACK
+			OsStackCore = OsCore0
+			OsStackUser = OsTask_NvmAccess
 		}
 		OsStack OsCore0_Isr_Level1 {
 			OsStackSize = 2048
 			OsStackType = ISR_SHARED_LEVEL_STACK
+			OsStackCore = OsCore0
+			OsStackUser = TAUD0_CH05_CAT2_ISR
 		}
 	}
 }
@@ -140,6 +207,7 @@ RH850G3KH Users Manual: Software  Rev.1.10 Jul 2016
 			OsPhysicalCorePrivelegedHwAccess = True
 			OsPhysicalCoreDefaultEntrySymbol = RESET_CORE0
 			OsPhysicalCoreType = G3KH
+			OsPhysicalCoreStackProtectionUnit = MPU_CORE0
 			OsPhysicalCoreMpu MPU_CORE0 {
 				OsPhysicalCoreMpuId = 0
 				OsPhysicalCoreMpuMaxRegions = 16
@@ -409,6 +477,10 @@ OsCore OsCore0 {
 	OsCoreIsAutostart = True
 	OsCoreIsAutosar = True
 	OsCoreEntrySymbol = RESET_CORE0
+	OsCorePhysicalCoreRef = CORE0
+	OsCoreEcucCoreRef = EcucCoreDefinition
+	OsCoreIdleTask = IdleTask_OsCore0
+	OsCoreSystemApplication = SystemApplication_OsCore0
 	OsCoreStacks OsCoreStacks {
 		OsCoreKernelStackSize = 1024
 		OsCoreStartupStackSize = 1024
@@ -426,7 +498,9 @@ OsTask IdleTask_OsCore0 {
 	OsTaskUsesFpu = False
 	OsTaskSchedule = FULL
 	OsTaskType = AUTO
+	OsTaskAccessingApplication = SystemApplication_OsCore0
 	OsTaskAutostart OsTaskAutostart {
+		OsTaskAppModeRef = OS_APPMODE_ANY
 	}
 }
 OsApplication SystemApplication_OsCore0 {
@@ -435,6 +509,70 @@ OsApplication SystemApplication_OsCore0 {
 	OsTrustedApplicationWithProtection = False
 	OsApplicationIsPrivileged = True
 	OsAppUseTrustedFunctionStubs = False
+	OsApplicationCoreRef = EcucCoreDefinition
+	OsAppCounterRef = OsCounter_1ms
+	OsAppTaskRef = IdleTask_OsCore0
+	OsAppIsrRef = CounterIsr_SystemTimer
+	OsAppTaskRef = Default_Init_Task
+	OsAppTaskRef = OsTask_BswMainFunctions
+	OsAppAlarmRef = Rte_Al_TE_CanTp_CanTp_MainFunction
+	OsAppTaskRef = OsTask_ApplInitDeInit
+	OsAppTaskRef = OsTask_ApplMainFunctions
+	OsAppTaskRef = OsTask_ApplTimedInitDeInit
+	OsAppTaskRef = OsTask_ApplVerify
+	OsAppTaskRef = OsTask_Background
+	OsAppTaskRef = OsTask_Communication
+	OsAppTaskRef = OsTask_Dimming
+	OsAppTaskRef = OsTask_NvmAccess
+	OsAppTaskRef = OsTask_SelfDiagnostics
+	OsAppTaskRef = OsTask_Touch
+	OsAppIsrRef = INTIIC0EE
+	OsAppIsrRef = INTIIC0RI
+	OsAppIsrRef = INTIIC0TEI
+	OsAppAlarmRef = Rte_Al_TE_OsTask_ApplMainFunctions_0_10ms
+	OsAppAlarmRef = Rte_Al_TE_OsTask_ApplTimedInitDeInit_0_1ms
+	OsAppAlarmRef = Rte_Al_TE_OsTask_ApplVerify_0_10ms
+	OsAppAlarmRef = Rte_Al_TE_SwcTemperatureCorrection_SwcTempCor_MainFunction
+	OsAppAlarmRef = Rte_Al_TE_SwcSelfDiagnostics_SwcSelfDiag_UpdateCpuLoad
+	OsAppIsrRef = ADC0_SG1_CAT2_ISR
+	OsAppIsrRef = CanIsrStatus_0
+	OsAppIsrRef = CanIsrTx_0
+	OsAppAlarmRef = Rte_Al_TE2_OsTask_BswMainFunctions_0_20ms
+	OsAppIsrRef = EXT_INTP_CH07_CAT2_ISR
+	OsAppIsrRef = SPI_CSIH0_TIR_CAT2_ISR
+	OsAppIsrRef = SPI_CSIH3_TIR_CAT2_ISR
+	OsAppAlarmRef = OsAlarm_CddHUIfOnZrResetComplete
+	OsAppAlarmRef = OsAlarm_CddHUIfOnButtonHold
+	OsAppIsrRef = WDG_59_DRIVERA_TRIGGERFUNCTION_CAT2_ISR
+	OsAppIsrRef = SPI_CSIH2_TIR_CAT2_ISR
+	OsAppIsrRef = EXT_INTP_CH03_CAT2_ISR
+	OsAppAlarmRef = OsAlarm_CddWdgIfToggleHwWdgClockLevel
+	OsAppIsrRef = TAUD0_CH00_CAT2_ISR
+	OsAppIsrRef = IRQDmaChannel2TransmitComplete
+	OsAppTaskRef = OsTask_DcmSessionChanges
+	OsAppAlarmRef = Rte_Al_TE2_OsTask_BswMainFunctions_0_10ms
+	OsAppAlarmRef = Rte_Al_TE_SwcSelfDiagnostics_SwcSelfDiag_UpdateRuntime
+	OsAppAlarmRef = Rte_Al_TE_OsTask_ApplMainFunctions_0_1ms
+	OsAppIsrRef = IRQDmaChannel5TransmitComplete
+	OsAppIsrRef = IRQDmaChannel5ReceiveComplete
+	OsAppIsrRef = TAUD0_CH02_CAT2_ISR
+	OsAppIsrRef = TAUD0_CH04_CAT2_ISR
+	OsAppIsrRef = TAUD0_CH01_CAT2_ISR
+	OsAppIsrRef = CanIsrGlobalRxFifo_0
+	OsAppCounterRef = OsCounter_10ms
+	OsAppIsrRef = CounterIsr_OsCounter_10ms
+	OsAppAlarmRef = OsAlarm_SwcDispCtrlNauchLauf
+	OsAppAlarmRef = Rte_Al_TE_ShA_Ivd_MainFunction
+	OsAppIsrRef = ADC1_SG1_CAT2_ISR
+	OsAppAlarmRef = OsAlarm_SwcHidKeystxConfirmationTimeout
+	OsAppAlarmRef = OsAlarm_SwcHidKeysOnButtonHold
+	OsAppIsrRef = TAUD0_CH05_CAT2_ISR
+	OsAppAlarmRef = OsAlarm_CddWakeupDetectClearResetStatus
+	OsAppAlarmRef = Rte_Al_TE_CddHwrOnUartRxReady
+	OsAppAlarmRef = OsAlarm_SwcComRxWakeupReasonTimeout
+	OsAppAlarmRef = Rte_Al_TE_CddUart_CddUart_MainFunction
+	OsAppAlarmRef = OsAlarm_CddTouchTimeout
+	OsAppAlarmRef = Rte_Al_TE_SwcTouch_SwcTouch_MainFunction
 	OsApplicationHooks OsApplicationHooks {
 		OsAppErrorHook = False
 		OsAppShutdownHook = False
@@ -454,17 +592,20 @@ OsIsr CounterIsr_SystemTimer {
 }
 OsTask Default_Init_Task {
 	OsTaskActivation = 1
-	OsTaskPriority = {'ANNOTATION': {'LABEL': {'L-4': 'Annotation'}, 'ANNOTATION-ORIGIN': 'DV:User', 'ANNOTATION-TEXT': {'P': [{'L-1': 'PLAIN_TEXT'}, {'L-1': "MJ 24-03-2020:&#13;\nThis task is part of the vBRS (Vector Basic Runtime System) start-up. It is a basic task which terminates after calling EcuM_StartupTwo() and Os_InitialEnableInterruptSources().&#13;\nLet's keep its priority high since we only use it during start-up and it should not be blocked by other tasks."}]}}}
+	OsTaskPriority = 1001
 	OsTaskStackSharing = False
 	OsTaskStackSize = 2048
 	OsTaskUsesFpu = False
 	OsTaskSchedule = FULL
 	OsTaskType = BASIC
+	OsTaskAccessingApplication = SystemApplication_OsCore0
 	OsTaskAutostart OsTaskAutostart {
+		OsTaskAppModeRef = OSDEFAULTAPPMODE
 	}
 }
 OsResource OsResourceEcuM {
 	OsResourceProperty = STANDARD
+	OsResourceAccessingApplication = SystemApplication_OsCore0
 }
 OsTask OsTask_BswMainFunctions {
 	OsTaskActivation = 1
@@ -474,50 +615,129 @@ OsTask OsTask_BswMainFunctions {
 	OsTaskUsesFpu = False
 	OsTaskSchedule = FULL
 	OsTaskType = EXTENDED
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Al_TE2_OsTask_BswMainFunctions_0_10ms {
-	{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} OsAlarmAction {
-		{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} OsAlarmSetEvent {
-		}
-	}
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Cyclic2_OsTask_BswMainFunctions_0_10ms {
-}
-2021]&#13;\nSince CddNvMManager is responsible for the initialization and deinitializtaion of non-volatile memory, it shall be ensured that:&#13;\n* CddNvMManager_Init is the first runnable to execute;&#13;\n* CddNvMManager_DeInit is the last runnable to execute.'}]}}} OsTask_ApplInitDeInit {
-	OsTaskActivation = 1
-	OsTaskPriority = {'ANNOTATION': {'LABEL': {'L-4': 'Annotation'}, 'ANNOTATION-ORIGIN': 'DV:User', 'ANNOTATION-TEXT': {'P': [{'L-1': 'PLAIN_TEXT'}, {'L-1': 'March 25th, 2019. Mark Janssen&#13;\nThe ApplInitDeInit task shall have a priority lower than the ApplMainFunctions task. If a task contains runnables with mode disabling dependencies, such as the ApplMainFunctions task, its priotiry shall be higher than tasks containing runnables with mode change triggers.&#13;\nThe combination of mode disabling dependencies and mode trigger allows the ApplInitDeInit task to have a priority less than ApplMainFunctions.'}]}}}
-	OsTaskStackSharing = False
-	OsTaskStackSize = 2048
-	OsTaskUsesFpu = False
-	OsTaskSchedule = FULL
-	OsTaskType = EXTENDED
+	OsTaskAccessingApplication = SystemApplication_OsCore0
+	OsTaskResourceRef = OsResourceEcuM
+	OsTaskEventRef = Rte_Ev_Cyclic2_OsTask_BswMainFunctions_0_10ms
+	OsTaskEventRef = Rte_Ev_Cyclic2_OsTask_BswMainFunctions_0_20ms
+	OsTaskEventRef = Rte_Ev_Run_CanTp_CanTp_MainFunction
+	OsTaskResourceRef = Rte_Res_SwcDimming_EASwcDimDiagnostics
+	OsTaskResourceRef = Rte_Res_CddWakeupDetect_EACddWUDetDiagnostics
+	OsTaskResourceRef = Rte_Res_CddHeadUnitInterface_EACddHUIfDeviceAccess
+	OsTaskResourceRef = Rte_Res_CddHWRNXPRT1171_EACddHwrCfgManager
+	OsTaskResourceRef = Rte_Res_CddHWRNXPRT1171_EACddHwrCom
+	OsTaskResourceRef = Rte_Res_CddHWRNXPRT1171_EACddHwrEventQueue
+	OsTaskResourceRef = Rte_Res_CddHWRNXPRT1171_EACddHwrRequestCtrl
+	OsTaskEventRef = Rte_Ev_Run_CddUart_CddUart_MainFunction
+	OsTaskResourceRef = Rte_Res_SwcComHandlerTx_EASwcComTxCmdQueueAccess
+	OsTaskResourceRef = Rte_Res_SwcError_EASwcErrorCounters
+	OsTaskResourceRef = Rte_Res_CddHWRNXPRT1171_EACddHwrModes
+	OsTaskResourceRef = Rte_Res_CddHWRNXPRT1171_EACddHwrMonitoring
+	OsTaskResourceRef = Rte_Res_CddSliderBackLightTiSN1903001_EACddSldrBuffer
+	OsTaskResourceRef = Rte_Res_CddTouchCypressGen7_EACddTouchTrigger
+	OsTaskResourceRef = Rte_Res_CddTouchCypressGen7_EACddTouchMode
+	OsTaskResourceRef = Rte_Res_CddPeripheralControl_EACddPerCtrlDiagAccess
+	OsTaskResourceRef = Rte_Res_SwcHWR_EASwcHWRCharDataBuffer
+	OsTaskResourceRef = Rte_Res_CddDebugInfo_EACddDbgInfoBuffer
 }
 OsTask OsTask_ApplMainFunctions {
 	OsTaskActivation = 1
-	OsTaskPriority = {'ANNOTATION': {'LABEL': {'L-4': 'Annotation'}, 'ANNOTATION-ORIGIN': 'DV:User', 'ANNOTATION-TEXT': {'P': [{'L-1': 'PLAIN_TEXT'}, {'L-1': 'March 25th, 2019. Mark Janssen&#13;\nRefer to annotation of ApplInitDeInit/ApplTimedInitDeInit'}]}}}
+	OsTaskPriority = 100
 	OsTaskStackSharing = False
 	OsTaskStackSize = 2048
 	OsTaskUsesFpu = False
 	OsTaskSchedule = FULL
 	OsTaskType = EXTENDED
+	OsTaskEventRef = Rte_Ev_Run1_CddSliderBackLightTiSN1903001_CddSldr_OnReadSeqReady
+	OsTaskEventRef = Rte_Ev_Run_SwcIVD_AppData_Dsdl1_AdrRange
+	OsTaskAccessingApplication = SystemApplication_OsCore0
+	OsTaskEventRef = Rte_Ev_Cyclic_OsTask_ApplMainFunctions_0_10ms
+	OsTaskEventRef = Rte_Ev_Cyclic_OsTask_ApplMainFunctions_0_1ms
+	OsTaskEventRef = Rte_Ev_Run_SwcDimming_SwcDim_ProcessDeratingLimit
+	OsTaskEventRef = Rte_Ev_Run_SwcDimming_SwcDim_ProcessDim01Data
+	OsTaskResourceRef = Rte_Res_SwcDimming_EASwcDimDiagnostics
+	OsTaskEventRef = Rte_Ev_Run_ShA_Ivd_MainFunction
+	OsTaskEventRef = Rte_Ev_Run_SwcDisplayControl_SwcDispCtrl_ProcessDim01Data
+	OsTaskEventRef = Rte_Ev_Run_SwcIVD_AdaptionCodingOrDsdl2_Data
+	OsTaskEventRef = Rte_Ev_Run_SwcIVD_AppData_Dsdl1_Data
+	OsTaskEventRef = Rte_Ev_Run_CddWakeupDetect_CddWUDet_ProcessBem02Data
+	OsTaskEventRef = Rte_Ev_Run_CddWakeupDetect_CddWUDet_ProcessSi01Data
+	OsTaskEventRef = Rte_Ev_Run_CddWakeupDetect_CddWUDet_ProcessZr01Data
+	OsTaskEventRef = Rte_Ev_Run1_SwcHidKeys_SwcHidKeys_OnButtonHold
+	OsTaskEventRef = Rte_Ev_OnEntry_OsTask_ApplMainFunctions_ComM_UM_CN_MIBCAN_49695965_currentMode_COMM_FULL_COMMUNICATION
+	OsTaskEventRef = Rte_Ev_Run_CddHWRNXPRT1171_CddHwr_ProcessSwUpdateReq
+	OsTaskEventRef = Rte_Ev_Run_SwcDisplayControl_SwcDispCtrl_OnEnterSldrBacklightEnabled
+	OsTaskEventRef = Rte_Ev_Run_CddHWRNXPRT1171_CddHwr_ProcessSwcDispCtrlModeReq
+	OsTaskEventRef = Rte_Ev_Run_SwcHWR_SwcHWR_DeviceNotReady
+	OsTaskEventRef = Rte_Ev_Run_SwcHWR_SwcHWR_DeviceReady
+	OsTaskResourceRef = Rte_Res_CddHWRNXPRT1171_EACddHwrCfgManager
+	OsTaskResourceRef = Rte_Res_CddHWRNXPRT1171_EACddHwrCom
+	OsTaskResourceRef = Rte_Res_CddHWRNXPRT1171_EACddHwrEventQueue
+	OsTaskResourceRef = Rte_Res_CddHWRNXPRT1171_EACddHwrModes
+	OsTaskResourceRef = Rte_Res_CddHWRNXPRT1171_EACddHwrMonitoring
+	OsTaskResourceRef = Rte_Res_CddHWRNXPRT1171_EACddHwrRequestCtrl
+	OsTaskEventRef = Rte_Ev_OnRx_OsTask_ApplMainFunctions_DI_Screendesign_oZentralrechner_01_oMIBCAN_be1aac5d_Rx
+	OsTaskResourceRef = Rte_Res_CddWakeupDetect_EACddWUDetDiagnostics
+	OsTaskEventRef = Rte_Ev_Run1_SwcComHandlerRx_SwcComRx_ProcessZrPlatform
+	OsTaskEventRef = Rte_Ev_Run1_SwcComHandlerRx_SwcComRx_WakeupReasonTimeout
+	OsTaskEventRef = Rte_Ev_Run_CddHWRNXPRT1171Swdl_CddHwrSwdl_ProcessHwrHealthStatus
+	OsTaskEventRef = Rte_Ev_Run_CddHWRNXPRT1171Swdl_CddHwrSwdl_SwUpdateOnEnter
+	OsTaskResourceRef = Rte_Res_SwcError_EASwcErrorCounters
+	OsTaskEventRef = Rte_Ev_Run_SwcDisplayInfo_SwcDispInfo_ProcessSteeringWheelPos
+	OsTaskResourceRef = Rte_Res_SwcComHandlerTx_EASwcComTxCmdQueueAccess
+	OsTaskEventRef = Rte_Ev_Run1_CddHWRNXPRT1171_CddHwr_OnUartRxReady
+	OsTaskEventRef = Rte_Ev_Run1_CddWakeupDetect_CddWUDet_ClearResetStatus
+	OsTaskResourceRef = Rte_Res_CddSliderBackLightTiSN1903001_EACddSldrBuffer
+	OsTaskEventRef = Rte_Ev_OnEntry_OsTask_ApplMainFunctions_ComM_UM_CN_MIBCAN_49695965_currentMode_COMM_NO_COMMUNICATION
+	OsTaskEventRef = Rte_Ev_OnExit_OsTask_ApplMainFunctions_ComM_UM_CN_MIBCAN_49695965_currentMode_COMM_FULL_COMMUNICATION
+	OsTaskEventRef = Rte_Ev_OnExit_OsTask_ApplMainFunctions_ComM_UM_CN_MIBCAN_49695965_currentMode_COMM_NO_COMMUNICATION
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_HwrDlStateUpdate
+	OsTaskEventRef = Rte_Ev_Run_CddDeserializerTIDS90Ux948_CddDser_ProcessSwcDispCtrlModeReq
+	OsTaskEventRef = Rte_Ev_Run1_CddDebugInfo_CddDbgInfo_OnTxReady
+	OsTaskEventRef = Rte_Ev_Run_SwcDisplayControl_SwcDispCtrl_OnExitSldrBacklightEnabled
+	OsTaskEventRef = Rte_Ev_Run1_CddSliderBackLightTiSN1903001_CddSldr_OnWriteSeqReady
+	OsTaskEventRef = Rte_Ev_Run_CddHWRNXPRT1171Swdl_CddHwrSwdl_ProcessCddHwrAppVersion
+	OsTaskEventRef = Rte_Ev_Run_SwcComHandlerRx_SwcComRx_ProcessWakeupReason
+	OsTaskEventRef = Rte_Ev_Run_CddSliderBackLightTiSN1903001_CddSldr_ProcessSwcDispCtrlModeReq
+	OsTaskEventRef = Rte_Ev_Run1_CddTouchCypressGen7_CddTouch_Timeout
+	OsTaskEventRef = Rte_Ev_Run_SwcDisplayControl_SwcDispCtrl_ProcessZr01Data
+	OsTaskEventRef = Rte_Ev_Run1_SwcTestInterface_SwcTestIf_ProcessTouchData
+	OsTaskEventRef = Rte_Ev_Run_CddTouchCypressGen7_CddTouch_ModeReq
+	OsTaskEventRef = Rte_Ev_Run2_SwcTestInterface_SwcTestIf_ProcessTouchData
+	OsTaskResourceRef = Rte_Res_SwcHWR_EASwcHWRCharDataBuffer
+	OsTaskResourceRef = Rte_Res_CddDebugInfo_EACddDbgInfoBuffer
+	OsTaskEventRef = Rte_Ev_Run_CddPanelHimaxHx8249B_CddPnl_ProcessSwcDispCtrolModeReq
+	OsTaskEventRef = Rte_Ev_Run_CddBoosterMaximMAX20069_CddBstr_ProcessSwcDispCtrlModeReq
+	OsTaskResourceRef = Rte_Res_CddTouchCypressGen7_EACddTouchMode
+	OsTaskResourceRef = Rte_Res_CddTouchCypressGen7_EACddTouchTrigger
 }
 OsTask OsTask_ApplTimedInitDeInit {
 	OsTaskActivation = 1
-	OsTaskPriority = {'ANNOTATION': {'LABEL': {'L-4': 'Annotation'}, 'ANNOTATION-ORIGIN': 'DV:User', 'ANNOTATION-TEXT': {'P': [{'L-1': 'PLAIN_TEXT'}, {'L-1': 'March 25th, 2019. Mark Janssen&#13;\nThe ApplTimedInitDeInit task shall have a priority lower than the ApplMainFunctions task. If a task contains runnables with mode disabling dependencies, such as the ApplMainFunctions task, its priotiry shall be higher than tasks containing runnables with mode change triggers.&#13;\nThe combination of mode disabling dependencies and mode trigger allows the ApplTimedInitDeInit task to have a priority less than ApplMainFunctions.'}]}}}
+	OsTaskPriority = 30
 	OsTaskStackSharing = False
 	OsTaskStackSize = 2048
 	OsTaskUsesFpu = False
 	OsTaskSchedule = FULL
 	OsTaskType = EXTENDED
+	OsTaskAccessingApplication = SystemApplication_OsCore0
+	OsTaskEventRef = Rte_Ev_Cyclic_OsTask_ApplTimedInitDeInit_0_1ms
+	OsTaskResourceRef = Rte_Res_CddSliderBackLightTiSN1903001_EACddSldrBuffer
+	OsTaskResourceRef = Rte_Res_SwcError_EASwcErrorCounters
+	OsTaskResourceRef = Rte_Res_SwcComHandlerTx_EASwcComTxCmdQueueAccess
+	OsTaskResourceRef = Rte_Res_CddDebugInfo_EACddDbgInfoBuffer
 }
 OsTask OsTask_ApplVerify {
 	OsTaskActivation = 1
-	OsTaskPriority = {'ANNOTATION': {'LABEL': {'L-4': 'Annotation'}, 'ANNOTATION-ORIGIN': 'DV:User', 'ANNOTATION-TEXT': {'P': [{'L-1': 'PLAIN_TEXT'}, {'L-1': 'March 25th, 2019. Mark Janssen&#13;\nRefer to annotation of ApplInitDeInit/ApplTimedInitDeInit'}]}}}
+	OsTaskPriority = 40
 	OsTaskStackSharing = False
 	OsTaskStackSize = 1024
 	OsTaskUsesFpu = False
 	OsTaskSchedule = FULL
 	OsTaskType = EXTENDED
+	OsTaskAccessingApplication = SystemApplication_OsCore0
+	OsTaskEventRef = Rte_Ev_Cyclic_OsTask_ApplVerify_0_10ms
+	OsTaskResourceRef = Rte_Res_SwcComHandlerTx_EASwcComTxCmdQueueAccess
+	OsTaskResourceRef = Rte_Res_SwcError_EASwcErrorCounters
+	OsTaskResourceRef = Rte_Res_CddDebugInfo_EACddDbgInfoBuffer
 }
 OsTask OsTask_Background {
 	OsTaskActivation = 1
@@ -527,6 +747,10 @@ OsTask OsTask_Background {
 	OsTaskUsesFpu = False
 	OsTaskSchedule = FULL
 	OsTaskType = BASIC
+	OsTaskAccessingApplication = SystemApplication_OsCore0
+	OsTaskResourceRef = Rte_Res_SwcComHandlerTx_EASwcComTxCmdQueueAccess
+	OsTaskResourceRef = Rte_Res_SwcError_EASwcErrorCounters
+	OsTaskResourceRef = Rte_Res_CddDebugInfo_EACddDbgInfoBuffer
 }
 OsTask OsTask_Communication {
 	OsTaskActivation = 1
@@ -536,6 +760,20 @@ OsTask OsTask_Communication {
 	OsTaskUsesFpu = False
 	OsTaskSchedule = FULL
 	OsTaskType = EXTENDED
+	OsTaskAccessingApplication = SystemApplication_OsCore0
+	OsTaskResourceRef = Rte_Res_CddHeadUnitInterface_EACddHUIfDeviceAccess
+	OsTaskEventRef = Rte_Ev_Run_CddComTp_CddComTp_Transmit
+	OsTaskEventRef = Rte_Ev_Run_CddHeadUnitInterface_CddHUIf_ProcessButtonStatus
+	OsTaskEventRef = Rte_Ev_Run_SwcDisplayControl_SwcDispCtrl_ProcessBist
+	OsTaskEventRef = Rte_Ev_Run1_SwcHidKeys_SwcHidKeys_TxConfirmationTimeout
+	OsTaskEventRef = Rte_Ev_OnEntry_OsTask_Communication_SwcDisplayControl_PpSwcDispCtrlModeSwitch_mode_SWCDISPCTRL_OPMODE_ABTLOCAL
+	OsTaskEventRef = Rte_Ev_Run_SwcComHandlerTx_SwcComTx_ProcessWakeupReason
+	OsTaskResourceRef = Rte_Res_SwcComHandlerTx_EASwcComTxCmdQueueAccess
+	OsTaskResourceRef = Rte_Res_SwcError_EASwcErrorCounters
+	OsTaskEventRef = Rte_Ev_Run_CddKnockout_CddKo_ProcessBem02Data
+	OsTaskEventRef = Rte_Ev_Run_SwcDisplayInfo_SwcDispInfo_ProcessSteeringWheelPos
+	OsTaskResourceRef = Rte_Res_CddDebugInfo_EACddDbgInfoBuffer
+	OsTaskResourceRef = Rte_Res_SwcHWR_EASwcHWRCharDataBuffer
 }
 OsTask OsTask_Dimming {
 	OsTaskActivation = 1
@@ -545,15 +783,61 @@ OsTask OsTask_Dimming {
 	OsTaskUsesFpu = False
 	OsTaskSchedule = FULL
 	OsTaskType = EXTENDED
+	OsTaskAccessingApplication = SystemApplication_OsCore0
+	OsTaskEventRef = Rte_Ev_Run1_SwcTemperatureCorrection_SwcTempCor_MainFunction
+	OsTaskEventRef = Rte_Ev_Run_SwcTemperatureCorrection_SwcTempCor_ProcessBacklightTemp
+	OsTaskResourceRef = Rte_Res_SwcComHandlerTx_EASwcComTxCmdQueueAccess
+	OsTaskResourceRef = Rte_Res_SwcError_EASwcErrorCounters
+	OsTaskResourceRef = Rte_Res_CddDebugInfo_EACddDbgInfoBuffer
 }
 OsTask OsTask_NvmAccess {
 	OsTaskActivation = 1
-	OsTaskPriority = {'ANNOTATION': {'LABEL': {'L-4': 'Annotation'}, 'ANNOTATION-ORIGIN': 'DV:User', 'ANNOTATION-TEXT': {'P': [{'L-1': 'PLAIN_TEXT'}, {'L-1': 'March 25th, 2019. Mark Janssen&#13;\nRefer to annotation of ApplInitDeInit/ApplTimedInitDeInit'}]}}}
+	OsTaskPriority = 210
 	OsTaskStackSharing = False
 	OsTaskStackSize = 1024
 	OsTaskUsesFpu = False
 	OsTaskSchedule = FULL
 	OsTaskType = EXTENDED
+	OsTaskAccessingApplication = SystemApplication_OsCore0
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_BlockCounterApplication1Update
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_BlockCounterApplication2Update
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_BlockCounterNonVolatileMemoryUpdate
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_BlockCounterReserved2Update
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_BlockCounterTouchBackupUpdate
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_DeratingCountUpdate
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_DimmingConfigurationUpdate
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_DowngradeProtectionGlobalVersionNumberUpdate
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_DowngradeProtectionVersionApplication1Update
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_DowngradeProtectionVersionApplication2Update
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_DowngradeProtectionVersionNonVolatileMemoryUpdate
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_DowngradeProtectionVersionReserved2Update
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_DowngradeProtectionVersionTouchBackupUpdate
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_EcuInfoUpdate
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_ErrorCountersUpdate
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_ErrorTraceUpdate
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_FingerPrintApplication1Update
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_FingerPrintApplication2Update
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_FingerPrintNonVolatileMemoryUpdate
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_FingerPrintReserved2Update
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_FingerPrintTouchBackupUpdate
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_MinimumSeveritiesUpdate
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_TemperatureMinMaxUpdate
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_VerifyModeUpdate
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_VoltageMinMaxUpdate
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_SwcComHandlerTxBlockCntrsUpdate
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_SwcComHandlerTxEventCntrsUpdate
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_PpCddNvmManagerLogisticsData_Update
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_SwcHwrCfgDataUpdate
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_SwcDlMngrVerionHistoryUpdate
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_TouchDeviceCfgUpdate
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_CddWUDetNvmData2Update
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_CddWUDetNvmDataUpdate
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_SwcComRxNvmDataUpdate
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_SecAttemptCntrsUpdate
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_ProgInfoUpdate
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvmManager_SparePartNumberUpdate
+	OsTaskEventRef = Rte_Ev_Run1_CddNvMManager_CddNvMManager_DisplayInfoCfgUpdate
+	OsTaskEventRef = Rte_Ev_Run_CddNvMManager_CddNvMManager_SystemVersionUpdate
 }
 OsTask OsTask_SelfDiagnostics {
 	OsTaskActivation = 1
@@ -563,6 +847,15 @@ OsTask OsTask_SelfDiagnostics {
 	OsTaskUsesFpu = False
 	OsTaskSchedule = FULL
 	OsTaskType = EXTENDED
+	OsTaskAccessingApplication = SystemApplication_OsCore0
+	OsTaskResourceRef = Rte_Res_SwcComHandlerTx_EASwcComTxCmdQueueAccess
+	OsTaskResourceRef = Rte_Res_SwcError_EASwcErrorCounters
+	OsTaskResourceRef = Rte_Res_CddDebugInfo_EACddDbgInfoBuffer
+	OsTaskEventRef = Rte_Ev_Run1_SwcSelfDiagnostics_SwcSelfDiag_UpdateCpuLoad
+	OsTaskEventRef = Rte_Ev_Run_SwcSelfDiagnostics_SwcSelfDiag_EvaluateBacklightTemp
+	OsTaskEventRef = Rte_Ev_Run_SwcSelfDiagnostics_SwcSelfDiag_EvaluateBatteryVoltage
+	OsTaskEventRef = Rte_Ev_Run_SwcSelfDiagnostics_SwcSelfDiag_EvaluateBlTempDeratingLimit
+	OsTaskEventRef = Rte_Ev_Run_SwcSelfDiagnostics_SwcSelfDiag_UpdateRuntime
 }
 OsTask OsTask_Touch {
 	OsTaskActivation = 1
@@ -572,6 +865,25 @@ OsTask OsTask_Touch {
 	OsTaskUsesFpu = False
 	OsTaskSchedule = FULL
 	OsTaskType = AUTO
+	OsTaskAccessingApplication = SystemApplication_OsCore0
+	OsTaskEventRef = Rte_Ev_Run1_CddHeadUnitInterface_CddHUIf_OnButtonHold
+	OsTaskEventRef = Rte_Ev_Run1_CddHeadUnitInterface_CddHUIf_OnZrResetComplete
+	OsTaskResourceRef = Rte_Res_CddHeadUnitInterface_EACddHUIfDeviceAccess
+	OsTaskResourceRef = Rte_Res_CddHWRNXPRT1171_EACddHwrCfgManager
+	OsTaskResourceRef = Rte_Res_CddHWRNXPRT1171_EACddHwrCom
+	OsTaskResourceRef = Rte_Res_CddHWRNXPRT1171_EACddHwrEventQueue
+	OsTaskResourceRef = Rte_Res_CddHWRNXPRT1171_EACddHwrModes
+	OsTaskResourceRef = Rte_Res_CddHWRNXPRT1171_EACddHwrMonitoring
+	OsTaskResourceRef = Rte_Res_CddHWRNXPRT1171_EACddHwrRequestCtrl
+	OsTaskEventRef = Rte_Ev_Run_SwcHidKeys_SwcHidKeys_ProcessButtonStatus
+	OsTaskEventRef = Rte_Ev_Run_SwcTouch_SwcTouch_ProcessDisplayDataLO
+	OsTaskEventRef = Rte_Ev_OnRx_OsTask_Touch_CddTouchCypressGen7_PpCddTouchDisplayData_fingerData
+	OsTaskResourceRef = Rte_Res_SwcError_EASwcErrorCounters
+	OsTaskResourceRef = Rte_Res_SwcComHandlerTx_EASwcComTxCmdQueueAccess
+	OsTaskEventRef = Rte_Ev_Run_SwcTouch_SwcTouch_ProcessSliderData
+	OsTaskResourceRef = Rte_Res_CddDebugInfo_EACddDbgInfoBuffer
+	OsTaskResourceRef = Rte_Res_SwcHWR_EASwcHWRCharDataBuffer
+	OsTaskEventRef = Rte_Ev_Run1_SwcTouch_SwcTouch_MainFunction
 }
 OsIsr INTIIC0EE {
 	OsIsrCategory = CATEGORY_2
@@ -606,70 +918,15 @@ OsIsr INTIIC0TEI {
 	OsIsrUsesFpu = False
 	OsIsrInitialEnableInterruptSource = True
 }
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_MS_OsTask_ApplInitDeInit {
-	OsEventMask = {'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}}
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Al_TE_OsTask_ApplMainFunctions_0_10ms {
-	{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} OsAlarmAction {
-		{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} OsAlarmSetEvent {
-		}
-	}
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Al_TE_OsTask_ApplVerify_0_10ms {
-	{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} OsAlarmAction {
-		{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} OsAlarmSetEvent {
-		}
-	}
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Cyclic_OsTask_ApplMainFunctions_0_10ms {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Al_TE_OsTask_ApplTimedInitDeInit_0_1ms {
-	{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} OsAlarmAction {
-		{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} OsAlarmSetEvent {
-		}
-	}
-}
 OsIsr ADC0_SG1_CAT2_ISR {
 	OsIsrCategory = CATEGORY_2
 	OsIsrInterruptType = EXTERNAL
 	OsIsrInterruptSource = 18
 	OsIsrInterruptPriority = 0
-	OsIsrStackSize = {'ANNOTATION': {'LABEL': {'L-4': 'ISR Stack'}, 'ANNOTATION-ORIGIN': 'DV:User', 'ANNOTATION-TEXT': {'P': [{'L-1': 'PLAIN_TEXT'}, {'L-1': 'Stack is shared for interrupts, stack size will be assigned to the biggest value in the list. Modified when the new SPI mcal was added.'}]}}}
+	OsIsrStackSize = 2048
 	OsIsrEnableNesting = False
 	OsIsrUsesFpu = False
 	OsIsrInitialEnableInterruptSource = True
-}
-Can'}, 'ANNOTATION-ORIGIN': 'DV:OsInterruptServiceRoutine', 'ANNOTATION-TEXT': {'P': [{'L-1': 'PLAIN_TEXT'}, {'L-1': 'Can TX message event of controller CT_MIB_MIBCAN_07b1ca5f. This OsIsr container has been created automatically based on the Can driver configuration.'}]}}} CanIsrTx_0 {
-	OsIsrCategory = CATEGORY_2
-	OsIsrInterruptType = EXTERNAL
-	OsIsrInterruptSource = 26
-	OsIsrInterruptPriority = 0
-	OsIsrStackSize = 1024
-	OsIsrEnableNesting = False
-	OsIsrUsesFpu = False
-	OsIsrInitialEnableInterruptSource = True
-}
-Can'}, 'ANNOTATION-ORIGIN': 'DV:OsInterruptServiceRoutine', 'ANNOTATION-TEXT': {'P': [{'L-1': 'PLAIN_TEXT'}, {'L-1': 'Can busoff event of controller CT_MIB_MIBCAN_07b1ca5f. This OsIsr container has been created automatically based on the Can driver configuration.'}]}}} CanIsrStatus_0 {
-	OsIsrCategory = CATEGORY_2
-	OsIsrInterruptType = EXTERNAL
-	OsIsrInterruptSource = 24
-	OsIsrInterruptPriority = 0
-	OsIsrStackSize = 1024
-	OsIsrEnableNesting = False
-	OsIsrUsesFpu = False
-	OsIsrInitialEnableInterruptSource = True
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Al_TE2_OsTask_BswMainFunctions_0_20ms {
-	{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} OsAlarmAction {
-		{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} OsAlarmSetEvent {
-		}
-	}
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Cyclic2_OsTask_BswMainFunctions_0_20ms {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Cyclic_OsTask_ApplTimedInitDeInit_0_1ms {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Cyclic_OsTask_ApplVerify_0_10ms {
 }
 OsIsr EXT_INTP_CH07_CAT2_ISR {
 	OsIsrCategory = CATEGORY_2
@@ -702,14 +959,22 @@ OsIsr SPI_CSIH3_TIR_CAT2_ISR {
 	OsIsrInitialEnableInterruptSource = True
 }
 OsAlarm OsAlarm_CddHUIfOnZrResetComplete {
+	OsAlarmCounterRef = OsCounter_1ms
+	OsAlarmAccessingApplication = SystemApplication_OsCore0
 	OsAlarmAction OsAlarmAction {
 		OsAlarmSetEvent OsAlarmSetEvent {
+			OsAlarmSetEventRef = Rte_Ev_Run1_CddHeadUnitInterface_CddHUIf_OnZrResetComplete
+			OsAlarmSetEventTaskRef = OsTask_Touch
 		}
 	}
 }
 OsAlarm OsAlarm_CddHUIfOnButtonHold {
+	OsAlarmCounterRef = OsCounter_1ms
+	OsAlarmAccessingApplication = SystemApplication_OsCore0
 	OsAlarmAction OsAlarmAction {
 		OsAlarmSetEvent OsAlarmSetEvent {
+			OsAlarmSetEventRef = Rte_Ev_Run1_CddHeadUnitInterface_CddHUIf_OnButtonHold
+			OsAlarmSetEventTaskRef = OsTask_Touch
 		}
 	}
 }
@@ -744,6 +1009,8 @@ OsIsr EXT_INTP_CH03_CAT2_ISR {
 	OsIsrInitialEnableInterruptSource = True
 }
 OsAlarm OsAlarm_CddWdgIfToggleHwWdgClockLevel {
+	OsAlarmCounterRef = OsCounter_1ms
+	OsAlarmAccessingApplication = SystemApplication_OsCore0
 	OsAlarmAction OsAlarmAction {
 		OsAlarmCallback OsAlarmCallback {
 			OsAlarmCallbackName = CddWdgIf_ToggleHwWdgClockLevel
@@ -779,70 +1046,26 @@ OsTask OsTask_DcmSessionChanges {
 	OsTaskUsesFpu = False
 	OsTaskSchedule = FULL
 	OsTaskType = EXTENDED
+	OsTaskAccessingApplication = SystemApplication_OsCore0
+	OsTaskEventRef = Rte_Ev_Run_CddDownloadManager_CddDownloadManager_OnEntryDcmProgrammingSession
+	OsTaskEventRef = Rte_Ev_Run_CddDownloadManager_CddDownloadManager_OnEntryDcmDefaultSession
+	OsTaskEventRef = Rte_Ev_Run_CddDownloadManager_CddDownloadManager_OnExitDcmProgrammingSession
+	OsTaskEventRef = Rte_Ev_OnEntry_OsTask_DcmSessionChanges_Dcm_DcmDiagnosticSessionControl_DcmDiagnosticSessionControl_DEFAULT_SESSION
+	OsTaskResourceRef = Rte_Res_SwcError_EASwcErrorCounters
+	OsTaskEventRef = Rte_Ev_Run_SwcError_SwcError_OnEntryDcmDefaultSession
+	OsTaskEventRef = Rte_Ev_Run_SwcDisplayControl_SwcDispCtrl_OnEnterDefaultSession
+	OsTaskEventRef = Rte_Ev_Run_CddVoltageMonitor_CddVoltMon_OnEntryDefaultSession
+	OsTaskResourceRef = Rte_Res_SwcComHandlerTx_EASwcComTxCmdQueueAccess
+	OsTaskResourceRef = Rte_Res_CddTouchCypressGen7_EACddTouchTrigger
+	OsTaskResourceRef = Rte_Res_CddDebugInfo_EACddDbgInfoBuffer
+	OsTaskEventRef = Rte_Ev_Run_CddDownloadManager_CddDlMngr_OnEntryProgrammingSession
+	OsTaskEventRef = Rte_Ev_Run_CddDownloadManager_CddDlMngr_OnExitProgrammingSession
 }
 OsEvent Rte_Ev_Run_CddDownloadManager_CddDownloadManager_OnEntryDcmProgrammingSession {
 }
 OsEvent Rte_Ev_Run_CddDownloadManager_CddDownloadManager_OnEntryDcmDefaultSession {
 }
 OsEvent Rte_Ev_Run_CddDownloadManager_CddDownloadManager_OnExitDcmProgrammingSession {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_BlockCounterApplication1Update {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_BlockCounterApplication2Update {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_BlockCounterNonVolatileMemoryUpdate {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_BlockCounterReserved2Update {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_BlockCounterTouchBackupUpdate {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_DeratingCountUpdate {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_DimmingConfigurationUpdate {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_DowngradeProtectionGlobalVersionNumberUpdate {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_DowngradeProtectionVersionApplication1Update {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_DowngradeProtectionVersionApplication2Update {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_DowngradeProtectionVersionNonVolatileMemoryUpdate {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_DowngradeProtectionVersionReserved2Update {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_DowngradeProtectionVersionTouchBackupUpdate {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_EcuInfoUpdate {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_ErrorCountersUpdate {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_ErrorTraceUpdate {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_FingerPrintApplication1Update {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_FingerPrintApplication2Update {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_FingerPrintNonVolatileMemoryUpdate {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_FingerPrintReserved2Update {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_FingerPrintTouchBackupUpdate {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_MinimumSeveritiesUpdate {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_TemperatureMinMaxUpdate {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_VerifyModeUpdate {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_VoltageMinMaxUpdate {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Al_TE_OsTask_ApplMainFunctions_0_1ms {
-	{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} OsAlarmAction {
-		{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} OsAlarmSetEvent {
-		}
-	}
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Cyclic_OsTask_ApplMainFunctions_0_1ms {
 }
 OsIsr IRQDmaChannel5TransmitComplete {
 	OsIsrCategory = CATEGORY_2
@@ -896,34 +1119,17 @@ OsIsr TAUD0_CH01_CAT2_ISR {
 	OsIsrUsesFpu = False
 	OsIsrInitialEnableInterruptSource = True
 }
-Can'}, 'ANNOTATION-ORIGIN': 'DV:OsInterruptServiceRoutine', 'ANNOTATION-TEXT': {'P': [{'L-1': 'PLAIN_TEXT'}, {'L-1': 'Global Can RX BasicCAN message received event of unit 0. This OsIsr container has been created automatically based on the Can driver configuration.'}]}}} CanIsrGlobalRxFifo_0 {
-	OsIsrCategory = CATEGORY_2
-	OsIsrInterruptType = EXTERNAL
-	OsIsrInterruptSource = 23
-	OsIsrInterruptPriority = 0
-	OsIsrStackSize = 1024
-	OsIsrEnableNesting = False
-	OsIsrUsesFpu = False
-	OsIsrInitialEnableInterruptSource = True
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_OnRx_OsTask_Touch_CddTouchCypressGen7_PpCddTouchDisplayData_fingerData {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Al_TE_CanTp_CanTp_MainFunction {
-	{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} OsAlarmAction {
-		{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} OsAlarmSetEvent {
-		}
-	}
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_CanTp_CanTp_MainFunction {
-}
 OsCounter OsCounter_10ms {
 	OsCounterMaxAllowedValue = 1073741823
 	OsCounterMinCycle = 1
 	OsCounterTicksPerBase = 400000
 	OsSecondsPerTick = 0.01
 	OsCounterType = HARDWARE
+	OsCounterAccessingApplication = SystemApplication_OsCore0
 	OsDriver OsDriver {
 		OsDriverHighResolution = False
+		OsDriverHardwareTimerChannelRef = TAUJ2_CH0
+		OsDriverIsrRef = CounterIsr_OsCounter_10ms
 	}
 }
 OsIsr CounterIsr_OsCounter_10ms {
@@ -937,103 +1143,34 @@ OsIsr CounterIsr_OsCounter_10ms {
 	OsIsrUsesFpu = False
 	OsIsrInitialEnableInterruptSource = False
 }
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_SwcComHandlerTxBlockCntrsUpdate {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_SwcComHandlerTxEventCntrsUpdate {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_PpCddNvmManagerLogisticsData_Update {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_SwcDimming_SwcDim_ProcessDeratingLimit {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_SwcDimming_SwcDim_ProcessDim01Data {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Res_SwcDimming_EASwcDimDiagnostics {
-	OsResourceProperty = STANDARD
-}
 OsAlarm OsAlarm_SwcDispCtrlNauchLauf {
+	OsAlarmCounterRef = OsCounter_1ms
+	OsAlarmAccessingApplication = SystemApplication_OsCore0
 	OsAlarmAction OsAlarmAction {
 		OsAlarmCallback OsAlarmCallback {
 			OsAlarmCallbackName = SwcDispCtrl_NauchLaufExpired
 		}
 	}
 }
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_SwcDisplayControl_SwcDispCtrl_ProcessZr01Data {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Al_TE_ShA_Ivd_MainFunction {
-	{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} OsAlarmAction {
-		{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} OsAlarmSetEvent {
-		}
-	}
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_ShA_Ivd_MainFunction {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_SwcDisplayControl_SwcDispCtrl_ProcessDim01Data {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_SwcIVD_AdaptionCodingOrDsdl2_Data {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_SwcIVD_AppData_Dsdl1_AdrRange {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_SwcIVD_AppData_Dsdl1_Data {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_SwcHwrCfgDataUpdate {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_SwcDlMngrVerionHistoryUpdate {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_TouchDeviceCfgUpdate {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_CddWUDetNvmData2Update {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_CddWUDetNvmDataUpdate {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_CddWakeupDetect_CddWUDet_ProcessBem02Data {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_CddWakeupDetect_CddWUDet_ProcessSi01Data {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_CddWakeupDetect_CddWUDet_ProcessZr01Data {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Res_CddWakeupDetect_EACddWUDetDiagnostics {
-	OsResourceProperty = STANDARD
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Res_CddHeadUnitInterface_EACddHUIfDeviceAccess {
-	OsResourceProperty = STANDARD
-}
 OsIsr ADC1_SG1_CAT2_ISR {
 	OsIsrCategory = CATEGORY_2
 	OsIsrInterruptType = EXTERNAL
 	OsIsrInterruptSource = 213
 	OsIsrInterruptPriority = 0
-	OsIsrStackSize = {'ANNOTATION': {'LABEL': {'L-4': 'ISR Stack'}, 'ANNOTATION-ORIGIN': 'DV:User', 'ANNOTATION-TEXT': {'P': [{'L-1': 'PLAIN_TEXT'}, {'L-1': 'Stack is shared for interrupts, stack size will be assigned to the biggest value in the list. Modified when the new SPI mcal was added.'}]}}}
+	OsIsrStackSize = 2048
 	OsIsrEnableNesting = False
 	OsIsrUsesFpu = False
 	OsIsrInitialEnableInterruptSource = True
 }
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddHeadUnitInterface_CddHUIf_OnButtonHold {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddHeadUnitInterface_CddHUIf_OnZrResetComplete {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_ShA_Ivd_CurrentMode_PostRun {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_ShA_Ivd_CurrentMode_Run {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_SwcComRxNvmDataUpdate {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_SecAttemptCntrsUpdate {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_ProgInfoUpdate {
-}
 OsAlarm OsAlarm_SwcHidKeysOnButtonHold {
+	OsAlarmCounterRef = OsCounter_1ms
+	OsAlarmAccessingApplication = SystemApplication_OsCore0
 	OsAlarmAction OsAlarmAction {
 		OsAlarmSetEvent OsAlarmSetEvent {
+			OsAlarmSetEventRef = Rte_Ev_Run1_SwcHidKeys_SwcHidKeys_OnButtonHold
+			OsAlarmSetEventTaskRef = OsTask_ApplMainFunctions
 		}
 	}
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_SwcHidKeys_SwcHidKeys_TxConfirmationTimeout {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_SwcHidKeys_SwcHidKeys_ProcessButtonStatus {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvmManager_SparePartNumberUpdate {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_DisplayInfoCfgUpdate {
 }
 OsIsr TAUD0_CH05_CAT2_ISR {
 	OsIsrCategory = CATEGORY_2
@@ -1045,229 +1182,63 @@ OsIsr TAUD0_CH05_CAT2_ISR {
 	OsIsrUsesFpu = False
 	OsIsrInitialEnableInterruptSource = True
 }
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Al_TE_SwcTemperatureCorrection_SwcTempCor_MainFunction {
-	{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} OsAlarmAction {
-		{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} OsAlarmSetEvent {
-		}
-	}
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddHWRNXPRT1171_CddHwr_OnUartRxReady {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_CddHWRNXPRT1171_CddHwr_ProcessSwUpdateReq {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_CddHWRNXPRT1171_CddHwr_ProcessSwcDispCtrlModeReq {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_CddComTp_CddComTp_Transmit {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_CddHeadUnitInterface_CddHUIf_ProcessButtonStatus {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_SwcComHandlerTx_SwcComTx_ProcessWakeupReason {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_SwcHWR_SwcHWR_DeviceNotReady {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_SwcHWR_SwcHWR_DeviceReady {
-}
 OsAlarm Rte_Al_TE_CddHwrOnUartRxReady {
+	OsAlarmCounterRef = OsCounter_1ms
+	OsAlarmAccessingApplication = SystemApplication_OsCore0
 	OsAlarmAction OsAlarmAction {
 		OsAlarmSetEvent OsAlarmSetEvent {
+			OsAlarmSetEventRef = Rte_Ev_Run1_CddHWRNXPRT1171_CddHwr_OnUartRxReady
+			OsAlarmSetEventTaskRef = OsTask_ApplMainFunctions
 		}
 	}
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Res_CddHWRNXPRT1171_EACddHwrCfgManager {
-	OsResourceProperty = STANDARD
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Res_CddHWRNXPRT1171_EACddHwrCom {
-	OsResourceProperty = STANDARD
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Res_CddHWRNXPRT1171_EACddHwrEventQueue {
-	OsResourceProperty = STANDARD
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Res_CddHWRNXPRT1171_EACddHwrModes {
-	OsResourceProperty = STANDARD
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Res_CddHWRNXPRT1171_EACddHwrMonitoring {
-	OsResourceProperty = STANDARD
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Res_CddHWRNXPRT1171_EACddHwrRequestCtrl {
-	OsResourceProperty = STANDARD
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_OnRx_OsTask_ApplMainFunctions_DI_Screendesign_oZentralrechner_01_oMIBCAN_be1aac5d_Rx {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_SwcComHandlerRx_SwcComRx_ProcessZrPlatform {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_SwcComHandlerRx_SwcComRx_WakeupReasonTimeout {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_SwcDisplayInfo_SwcDispInfo_ProcessSteeringWheelPos {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_OnEntry_OsTask_ApplInitDeInit_SwcDisplayControl_PpSwcDispCtrlDisplayMode_Mode_UNINIT {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_OnExit_OsTask_ApplInitDeInit_SwcDisplayControl_PpSwcDispCtrlDisplayMode_Mode_OFF {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_OnExit_OsTask_ApplInitDeInit_SwcDisplayControl_PpSwcDispCtrlDisplayMode_Mode_UNINIT {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_CddHWRNXPRT1171Swdl_CddHwrSwdl_ProcessHwrHealthStatus {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_CddHWRNXPRT1171Swdl_CddHwrSwdl_SwUpdateOnEnter {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_OnEntry_OsTask_ApplMainFunctions_ComM_UM_CN_MIBCAN_49695965_currentMode_COMM_FULL_COMMUNICATION {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_OnExit_OsTask_ApplMainFunctions_ComM_UM_CN_MIBCAN_49695965_currentMode_COMM_FULL_COMMUNICATION {
 }
 OsAlarm OsAlarm_SwcHidKeystxConfirmationTimeout {
+	OsAlarmCounterRef = OsCounter_1ms
+	OsAlarmAccessingApplication = SystemApplication_OsCore0
 	OsAlarmAction OsAlarmAction {
 		OsAlarmSetEvent OsAlarmSetEvent {
+			OsAlarmSetEventRef = Rte_Ev_Run1_SwcHidKeys_SwcHidKeys_TxConfirmationTimeout
+			OsAlarmSetEventTaskRef = OsTask_Communication
 		}
 	}
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_SwcTemperatureCorrection_SwcTempCor_ProcessBacklightTemp {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_SwcHidKeys_SwcHidKeys_DeInit {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_SwcTemperatureCorrection_SwcTempCor_MainFunction {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_SwcTouch_SwcTouch_ProcessDisplayDataLO {
 }
 OsEvent Rte_Ev_Run1_CddWakeupDetect_CddWUDet_ClearResetStatus {
 }
 OsAlarm OsAlarm_CddWakeupDetectClearResetStatus {
+	OsAlarmCounterRef = OsCounter_1ms
+	OsAlarmAccessingApplication = SystemApplication_OsCore0
 	OsAlarmAction OsAlarmAction {
 		OsAlarmSetEvent OsAlarmSetEvent {
+			OsAlarmSetEventRef = Rte_Ev_Run1_CddWakeupDetect_CddWUDet_ClearResetStatus
+			OsAlarmSetEventTaskRef = OsTask_ApplMainFunctions
 		}
 	}
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_SwcHidKeys_SwcHidKeys_OnButtonHold {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_OnEntry_OsTask_DcmSessionChanges_Dcm_DcmDiagnosticSessionControl_DcmDiagnosticSessionControl_DEFAULT_SESSION {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_OnEntry_OsTask_ApplInitDeInit_SwcDisplayControl_PpSwcDispCtrlDisplayMode_Mode_INIT {
 }
 OsAlarm OsAlarm_SwcComRxWakeupReasonTimeout {
+	OsAlarmCounterRef = OsCounter_1ms
+	OsAlarmAccessingApplication = SystemApplication_OsCore0
 	OsAlarmAction OsAlarmAction {
 		OsAlarmSetEvent OsAlarmSetEvent {
+			OsAlarmSetEventRef = Rte_Ev_Run1_SwcComHandlerRx_SwcComRx_WakeupReasonTimeout
+			OsAlarmSetEventTaskRef = OsTask_ApplMainFunctions
 		}
 	}
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Al_TE_CddUart_CddUart_MainFunction {
-	{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} OsAlarmAction {
-		{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} OsAlarmSetEvent {
-		}
-	}
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_CddUart_CddUart_MainFunction {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Res_SwcError_EASwcErrorCounters {
-	OsResourceProperty = STANDARD
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_SwcDisplayControl_SwcDispCtrl_OnEnterSldrBacklightEnabled {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_SwcComHandlerRx_SwcComRx_ProcessWakeupReason {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_CddHWRNXPRT1171Swdl_CddHwrSwdl_ProcessCddHwrAppVersion {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_OnEntry_OsTask_Communication_SwcDisplayControl_PpSwcDispCtrlModeSwitch_mode_SWCDISPCTRL_OPMODE_ABTLOCAL {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_SwcDisplayControl_SwcDispCtrl_OnEnterDefaultSession {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_CddVoltageMonitor_CddVoltMon_OnEntryDefaultSession {
 }
 OsAlarm OsAlarm_CddTouchTimeout {
+	OsAlarmCounterRef = OsCounter_1ms
+	OsAlarmAccessingApplication = SystemApplication_OsCore0
 	OsAlarmAction OsAlarmAction {
 		OsAlarmSetEvent OsAlarmSetEvent {
+			OsAlarmSetEventRef = Rte_Ev_Run1_CddTouchCypressGen7_CddTouch_Timeout
+			OsAlarmSetEventTaskRef = OsTask_ApplMainFunctions
 		}
 	}
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_OnEntry_OsTask_ApplMainFunctions_ComM_UM_CN_MIBCAN_49695965_currentMode_COMM_NO_COMMUNICATION {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_CddNvMManager_CddNvMManager_SystemVersionUpdate {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_CddTouchCypressGen7_CddTouch_ModeReq {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_SwcDisplayControl_SwcDispCtrl_ProcessBist {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_SwcError_SwcError_OnEntryDcmDefaultSession {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Res_SwcComHandlerTx_EASwcComTxCmdQueueAccess {
-	OsResourceProperty = STANDARD
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_CddKnockout_CddKo_ProcessBem02Data {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddSliderBackLightTiSN1903001_CddSldr_OnReadSeqReady {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddSliderBackLightTiSN1903001_CddSldr_OnWriteSeqReady {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_SwcTestInterface_SwcTestIf_ProcessTouchData {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run2_SwcTestInterface_SwcTestIf_ProcessTouchData {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_CddSliderBackLightTiSN1903001_CddSldr_ProcessSwcDispCtrlModeReq {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_SwcTouch_SwcTouch_ProcessSliderData {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Res_CddSliderBackLightTiSN1903001_EACddSldrBuffer {
-	OsResourceProperty = STANDARD
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_OnExit_OsTask_ApplMainFunctions_ComM_UM_CN_MIBCAN_49695965_currentMode_COMM_NO_COMMUNICATION {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddNvMManager_CddNvMManager_HwrDlStateUpdate {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddTouchCypressGen7_CddTouch_Timeout {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Res_CddTouchCypressGen7_EACddTouchMode {
-	OsResourceProperty = STANDARD
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Res_CddTouchCypressGen7_EACddTouchTrigger {
-	OsResourceProperty = STANDARD
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Res_CddPeripheralControl_EACddPerCtrlDiagAccess {
-	OsResourceProperty = STANDARD
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_CddDebugInfo_CddDbgInfo_OnTxReady {
 }
 OsResource Rte_Res_CddDebugInfo_EACddDbgInfoBuffer {
 	OsResourceProperty = STANDARD
+	OsResourceAccessingApplication = SystemApplication_OsCore0
 }
 OsResource Rte_Res_SwcHWR_EASwcHWRCharDataBuffer {
 	OsResourceProperty = STANDARD
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_CddBoosterMaximMAX20069_CddBstr_ProcessSwcDispCtrlModeReq {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Al_TE_SwcSelfDiagnostics_SwcSelfDiag_UpdateCpuLoad {
-	{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} OsAlarmAction {
-		{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} OsAlarmSetEvent {
-		}
-	}
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Al_TE_SwcSelfDiagnostics_SwcSelfDiag_UpdateRuntime {
-	{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} OsAlarmAction {
-		{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} OsAlarmSetEvent {
-		}
-	}
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_SwcSelfDiagnostics_SwcSelfDiag_UpdateCpuLoad {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_SwcSelfDiagnostics_SwcSelfDiag_EvaluateBacklightTemp {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_SwcSelfDiagnostics_SwcSelfDiag_EvaluateBatteryVoltage {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_SwcSelfDiagnostics_SwcSelfDiag_EvaluateBlTempDeratingLimit {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_SwcSelfDiagnostics_SwcSelfDiag_UpdateRuntime {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_CddPanelHimaxHx8249B_CddPnl_ProcessSwcDispCtrolModeReq {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_CddDeserializerTIDS90Ux948_CddDser_ProcessSwcDispCtrlModeReq {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_SwcDisplayControl_SwcDispCtrl_OnExitSldrBacklightEnabled {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_CddDownloadManager_CddDlMngr_OnEntryProgrammingSession {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run_CddDownloadManager_CddDlMngr_OnExitProgrammingSession {
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Al_TE_SwcTouch_SwcTouch_MainFunction {
-	{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} OsAlarmAction {
-		{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} OsAlarmSetEvent {
-		}
-	}
-}
-{'ANNOTATION': {'ANNOTATION-ORIGIN': 'DV:RTE'}} Rte_Ev_Run1_SwcTouch_SwcTouch_MainFunction {
+	OsResourceAccessingApplication = SystemApplication_OsCore0
 }
