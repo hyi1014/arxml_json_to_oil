@@ -1,0 +1,1205 @@
+{
+    "SPEC-CONFIGURATION":{
+        "SPEC-NAME": "AUTOSAR-SWS-OS",
+        "SPEC-VERSION": "21-11",
+        "SPEC-FILE": "",
+        "SPEC-FILE-URL": "",
+        "SPEC-CONTAINERS":{
+            "Os":{
+                "INDEX": "10.2.1",
+                "CONTAINERS":[
+                ],
+                "INCLUDED-CONTAINERS":[
+                    {
+                        "NAME": "OsAlarm"
+                    },
+                    {
+                        "NAME": "OsAppMode"
+                    },
+                    {
+                        "NAME": "OsApplication"
+                    },
+                    {
+                        "NAME": "OsCounter"
+                    },
+                    {
+                        "NAME": "OsEvent"
+                    },
+                    {
+                        "NAME": "Osloc"
+                    },
+                    {
+                        "NAME": "OsIsr"
+                    },
+                    {
+                        "NAME": "OsOS"
+                    },
+                    {
+                        "NAME": "OsResource"
+                    },
+                    {
+                        "NAME": "OsPeripheralArea"
+                    },
+                    {
+                        "NAME": "OsScheduleTable"
+                    },
+                    {
+                        "NAME": "OsSpinlock"
+                    },
+                    {
+                        "NAME": "OsTask"
+                    }
+                ]
+            },
+            "OsAlarmSetEvent":{
+                "INDEX": "10.2.2",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsAlarmSetEventRef"
+                    },
+                    {
+                        "NAME": "OsAlarmSetEventTaskRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+
+                ]
+            },
+            "OsAlarm":{
+                "INDEX": "10.2.3",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsAlarmAccessingApplication"
+                    },
+                    {
+                        "NAME": "OsAlarmCounterRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                    {
+                        "NAME": "OsAlarmAction"
+                    },
+                    {
+                        "NAME": "OsAlarmAutostart"
+                    }
+                ]
+            },
+            "OsAlarmAction":{
+                "INDEX": "10.2.4",
+                "CONTAINERS":[
+                ],
+                "INCLUDED-CONTAINERS":[
+                    {
+                        "NAME": "OsAlarmActivateTask"
+                    },
+                    {
+                        "NAME": "OsAlarmCallback"
+                    },
+                    {
+                        "NAME": "OsAlarmIncrementCounter"
+                    },
+                    {
+                        "NAME": "OsAlarmSetEvent"
+                    }
+                ]
+            },
+            "OsAlarmActivateTask":{
+                "INDEX": "10.2.5",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsAlarmActivateTaskRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "OsAlarmAutostart":{
+                "INDEX": "10.2.6",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsAlarmAlarmTime"
+                    },
+                    {
+                        "NAME": "OsAlarmAutostartType"
+                    },
+                    {
+                        "NAME": "OsAlarmCycleTime"
+                    },
+                    {
+                        "NAME": "OsAlarmAppModeRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+
+                ]
+            },
+            "OsAlarmCallback":{
+                "INDEX": "10.2.7",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsAlarmCallbackName"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "OsAlarmIncrementCounter":{
+                "INDEX": "10.2.8",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsAlarmIncrementCounter"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "OsApplication":{
+                "INDEX": "10.2.9",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsTrusted"
+                    },
+                    {
+                        "NAME": "OsTrustedApplicationDelayTimingViolationCall"
+                    },
+                    {
+                        "NAME": "OsTrustedApplicationWithProtection"
+                    },
+                    {
+                        "NAME": "OsAppAlarmRef"
+                    },
+                    {
+                        "NAME": "OsAppCounterRef"
+                    },
+                    {
+                        "NAME": "OsAppEcucPartitionRef"
+                    },
+                    {
+                        "NAME": "OsAppIsrRef"
+                    },
+                    {
+                        "NAME": "OsApplicationCoreRef"
+                    },
+                    {
+                        "NAME": "OsAppScheduleTableRef"
+                    },
+                    {
+                        "NAME": "OsAppTaskRef"
+                    },
+                    {
+                        "NAME": "OsMemoryMappingCodeLocationRef"
+                    },
+                    {
+                        "NAME": "OsRestartTask"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                    {
+                        "NAME": "OsApplicationHooks"
+                    },
+                    {
+                        "NAME": "OsApplicationTrustedFunction"
+                    }
+                ]
+            },
+            "OsApplicationHooks":{
+                "INDEX": "10.2.10",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsAppErrorHook"
+                    },
+                    {
+                        "NAME": "OsAppShutdownHook"
+                    },
+                    {
+                        "NAME": "OsAppStartupHook"
+                    },
+                    {
+                        "NAME": "OsMemoryMappingCodeLocationRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+
+                ]
+            },
+            "OsApplicationTrustedFunction":{
+                "INDEX": "10.2.11",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsTrustedFunctionName"
+                    },
+                    {
+                        "NAME": "OsAppShutdownHook"
+                    },
+                    {
+                        "NAME": "OsAppStartupHook"
+                    },
+                    {
+                        "NAME": "OsMemoryMappingCodeLocationRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "OsAppMode":{
+                "INDEX": "10.2.12",
+                "CONTAINERS":[
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "OsCounter":{
+                "INDEX": "10.2.13",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsCounterMaxAllowedValue"
+                    },
+                    {
+                        "NAME": "OsCounterMinCycle"
+                    },
+                    {
+                        "NAME": "OsCounterTicksPerBase"
+                    },
+                    {
+                        "NAME": "OsCounterType"
+                    },
+                    {
+                        "NAME": "OsSecondsPerTick"
+                    },
+                    {
+                        "NAME": "OsCounterAccessingApplication"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                    {
+                        "NAME": "OsDriver"
+                    },
+                    {
+                        "NAME": "OsTimeConstant"
+                    }
+                ]
+            },
+            "OsEvent":{
+                "INDEX": "10.2.14",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsEventMask"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "OsDriver":{
+                "INDEX": "10.2.15",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsGptChannelRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "OsHooks":{
+                "INDEX": "10.2.16",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsErrorHook"
+                    },
+                    {
+                        "NAME": "OsPostTaskHook"
+                    },
+                    {
+                        "NAME": "OsPreTaskHook"
+                    },
+                    {
+                        "NAME": "OsProtectionHook"
+                    },
+                    {
+                        "NAME": "OsShutdownHook"
+                    },
+                    {
+                        "NAME": "OsStartupHook"
+                    },
+                    {
+                        "NAME": "OsMemoryMappingCodeLocationRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "OsIsr":{
+                "INDEX": "10.2.17",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsIsrCategory"
+                    },
+                    {
+                        "NAME": "OsIsrPeriod"
+                    },
+                    {
+                        "NAME": "OsIsrResourceRef"
+                    },
+                    {
+                        "NAME": "OsMemoryMappingCodeLocationRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                    {
+                        "NAME": "OsIsrTimingProtection"
+                    }
+                ]
+            },
+            "OsIsrResourceLock":{
+                "INDEX": "10.2.18",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsIsrResourceLockBudget"
+                    },
+                    {
+                        "NAME": "OsIsrResourceLockResourceRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "OsIsrTimingProtection":{
+                "INDEX": "10.2.19",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsIsrAllInterruptLockBudget"
+                    },
+                    {
+                        "NAME": "OsIsrExecutionBudget"
+                    },
+                    {
+                        "NAME": "OsIsrOsInterruptLockBudget"
+                    },
+                    {
+                        "NAME": "OsIsrTimeFrame"
+                    }
+
+                ],
+                "INCLUDED-CONTAINERS":[
+                    {
+                        "NAME": "OsIsrResourceLock"
+                    }
+                ]
+            },
+            "OsOS":{
+                "INDEX": "10.2.20",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsNumberOfCores"
+                    },
+                    {
+                        "NAME": "OsScalabilityClass"
+                    },
+                    {
+                        "NAME": "OsStackMonitoring"
+                    },
+                    {
+                        "NAME": "OsStatus"
+                    },
+                    {
+                        "NAME": "OsUseArti"
+                    },
+                    {
+                        "NAME": "OsUseGetServiceId"
+                    },
+                    {
+                        "NAME": "OsUseParameterAccess"
+                    },
+                    {
+                        "NAME": "OsUseResScheduler"
+                    }
+
+                ],
+                "INCLUDED-CONTAINERS":[
+                    {
+                        "NAME": "OsHooks"
+                    }
+                ]
+            },
+            "OsPeripheralArea":{
+                "INDEX": "10.2.21",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsPeripheralAreaEndAddress"
+                    },
+                    {
+                        "NAME": "OsPeripheralAreaId"
+                    },
+                    {
+                        "NAME": "OsPeripheralAreaStartAddress"
+                    },
+                    {
+                        "NAME": "OsPeripheralAreaAccessingApplication"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "OsResource":{
+                "INDEX": "10.2.22",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsResourceProperty"
+                    },
+                    {
+                        "NAME": "OsResourceAccessingApplication"
+                    },
+                    {
+                        "NAME": "OsResourceLinkedResourceRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "OsScheduleTable":{
+                "INDEX": "10.2.23",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsScheduleTableDuration"
+                    },
+                    {
+                        "NAME": "OsScheduleTableRepeating"
+                    },
+                    {
+                        "NAME": "OsScheduleTableCounterRef"
+                    },
+                    {
+                        "NAME": "OsSchTblAccessingApplication"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                    {
+                        "NAME": "OsScheduleTableAutostart"
+                    },
+                    {
+                        "NAME": "OsScheduleTableExpiryPoint"
+                    },
+                    {
+                        "NAME": "OsScheduleTableSync"
+                    }
+                ]
+            },
+            "OsScheduleTableAutostart":{
+                "INDEX": "10.2.24",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsScheduleTableAutostartType"
+                    },
+                    {
+                        "NAME": "OsScheduleTableStartValue"
+                    },
+                    {
+                        "NAME": "OsScheduleTableAppModeRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "OsScheduleTableEventSetting":{
+                "INDEX": "10.2.25",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsScheduleTableSetEventRef"
+                    },
+                    {
+                        "NAME": "OsScheduleTableSetEventTaskRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "OsScheduleTableExpiryPoint":{
+                "INDEX": "10.2.26",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsScheduleTblExpPointOffset"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                    {
+                        "NAME": "OsScheduleTableEventSetting"
+                    },
+                    {
+                        "NAME": "OsScheduleTableTaskActivation"
+                    },
+                    {
+                        "NAME": "OsScheduleTblAdjustableExpPoint"
+                    }
+                ]
+            },
+            "OsScheduleTableTaskActivation":{
+                "INDEX": "10.2.27",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsScheduleTableActivateTaskRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "OsScheduleTblAdjustableExpPoint":{
+                "INDEX": "10.2.28",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsScheduleTableMaxLengthen"
+                    },
+                    {
+                        "NAME": "OsScheduleTableMaxShorten"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "OsScheduleTableSync":{
+                "INDEX": "10.2.29",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsScheduleTblExplicitPrecision"
+                    },
+                    {
+                        "NAME": "OsScheduleTblSyncStrategy"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "OsSpinlock":{
+                "INDEX": "10.2.30",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsSpinlockLockMethod"
+                    },
+                    {
+                        "NAME": "OsSpinlockAccessingApplication"
+                    },
+                    {
+                        "NAME": "OsSpinlockSuccessor"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "OsTask":{
+                "INDEX": "10.2.31",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsTaskActivation"
+                    },
+                    {
+                        "NAME": "OsTaskPeriod"
+                    },
+                    {
+                        "NAME": "OsTaskPriority"
+                    },
+                    {
+                        "NAME": "OsTaskSchedule"
+                    },
+                    {
+                        "NAME": "OsMemoryMappingCodeLocationRef"
+                    },
+                    {
+                        "NAME": "OsTaskAccessingApplication"
+                    },
+                    {
+                        "NAME": "OsTaskEventRef"
+                    },
+                    {
+                        "NAME": "OsTaskLinkedResourceRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                    {
+                        "NAME": "OsTaskAutostart"
+                    },
+                    {
+                        "NAME": "OsTaskTimingProtection"
+                    }
+                ]
+            },
+            "OsTaskAutostart":{
+                "INDEX": "10.2.32",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsTaskAppModeRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "OsTaskResourceLock":{
+                "INDEX": "10.2.33",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsTaskResourceLockBudget"
+                    },
+                    {
+                        "NAME": "OsTaskResourceLockResourceRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "OsTaskTimingProtection":{
+                "INDEX": "10.2.34",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsTaskAllInterruptLockBudget"
+                    },
+                    {
+                        "NAME": "OsTaskExecutionBudget"
+                    },
+                    {
+                        "NAME": "OsTaskOsInterruptLockBudget"
+                    },
+                    {
+                        "NAME": "OsTaskTimeFrame"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                    {
+                        "NAME": "OsTaskResourceLock"
+                    }
+                ]
+            },
+            "OsTimeConstant":{
+                "INDEX": "10.2.35",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsTimeValue"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "OsIoc":{
+                "INDEX": "10.3.1",
+                "CONTAINERS":[
+                ],
+                "INCLUDED-CONTAINERS":[
+                    {
+                        "NAME": "OsIocCommunication"
+                    }
+                ]
+            },            
+            "OsIocCommunication":{
+                "INDEX": "10.3.2",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsIocBufferLength"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                    {
+                        "NAME": "OsIocDataProperties"
+                    },
+                    {
+                        "NAME": "OsIocReceiverProperties"
+                    },
+                    {
+                        "NAME": "OsIocSenderProperties"
+                    }
+                ]
+            },
+            "OsIocSenderProperties":{
+                "INDEX": "10.3.3",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsIocFunctionImplementationKind"
+                    },
+                    {
+                        "NAME": "OsIocSenderId"
+                    },
+                    {
+                        "NAME": "OsIocSendingOsApplicationRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "OsIocReceiverProperties":{
+                "INDEX": "10.3.4",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsIocFunctionImplementationKind"
+                    },
+                    {
+                        "NAME": "OsIocReceiverId"
+                    },
+                    {
+                        "NAME": "OsIocReceiverPullCB"
+                    },
+                    {
+                        "NAME": "OsIocReceivingOsApplicationRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "OsIocDataProperties":{
+                "INDEX": "10.3.5",
+                "CONTAINERS":[
+                    {
+                        "NAME": "OsIocDataPropertyIndex"
+                    },
+                    {
+                        "NAME": "OsIocInitValue"
+                    },
+                    {
+                        "NAME": "OsIocDataTypeRef"
+                    },
+                    {
+                        "NAME": "OsMemoryMappingCodeLocationRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "ArtiHardware":{
+                "INDEX": "10.4.1",
+                "CONTAINERS":[
+                ],
+                "INCLUDED-CONTAINERS":[
+                    {
+                        "NAME": "ArtiHardwareCoreClass"
+                    },
+                    {
+                        "NAME": "ArtiHardwareCoreInstance"
+                    }
+                ]
+            },
+            "ArtiHardwareCoreClass":{
+                "INDEX": "10.4.2",
+                "CONTAINERS":[
+                    {
+                        "NAME": "ArtiHardwareCoreClassCurrentApplicationRef"
+                    },
+                    {
+                        "NAME": "ArtiHardwareCoreClassCurrentIsrRef"
+                    },
+                    {
+                        "NAME": "ArtiHardwareCoreClassCurrentTaskRef"
+                    },
+                    {
+                        "NAME": "ArtiHardwareCoreClassGenericComponentRef"
+                    },
+                    {
+                        "NAME": "ArtiHardwareCoreClassLastErrorRef"
+                    },
+                    {
+                        "NAME": "ArtiHardwareCoreClassRunningTaskPriorityRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "ArtiHardwareCoreInstance":{
+                "INDEX": "10.4.3",
+                "CONTAINERS":[
+                    {
+                        "NAME": "ArtiHardwareCoreInstanceCoreId"
+                    },
+                    {
+                        "NAME": "ArtiHardwareCoreInstanceCurrentApplicationRef"
+                    },
+                    {
+                        "NAME": "ArtiHardwareCoreInstanceCurrentIsrRef"
+                    },
+                    {
+                        "NAME": "ArtiHardwareCoreInstanceCurrentTaskRef"
+                    },
+                    {
+                        "NAME": "ArtiHardwareCoreInstanceEcucCoreRef"
+                    },
+                    {
+                        "NAME": "ArtiHardwareCoreInstanceGenericComponentRef"
+                    },
+                    {
+                        "NAME": "ArtiHardwareCoreInstanceLastErrorRef"
+                    },
+                    {
+                        "NAME": "ArtiHardwareCoreInstanceRunningTaskPriorityRef"
+                    },
+                    {
+                        "NAME": "ArtiHardwareCoreInstanceValidRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "ArtiOs":{
+                "INDEX": "10.4.4",
+                "CONTAINERS":[
+                    {
+                        "NAME": "ArtiOsGenericComponentRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                    {
+                        "NAME": "ArtiOsAlarmClass"
+                    },
+                    {
+                        "NAME": "ArtiOsAlarmInstance"
+                    },
+                    {
+                        "NAME": "ArtiOsClass"
+                    },
+                    {
+                        "NAME": "ArtiOsContextClass"
+                    },
+                    {
+                        "NAME": "ArtiOsContextInstance"
+                    },
+                    {
+                        "NAME": "ArtiOsInstance"
+                    },
+                    {
+                        "NAME": "ArtiOsIsrClass"
+                    },
+                    {
+                        "NAME": "ArtiOsIsrInstance"
+                    },
+                    {
+                        "NAME": "ArtiOsMessageContainerClass"
+                    },
+                    {
+                        "NAME": "ArtiOsMessageContainerInstance"
+                    },
+                    {
+                        "NAME": "ArtiOsResourceClass"
+                    },
+                    {
+                        "NAME": "ArtiOsResourceInstance"
+                    },
+                    {
+                        "NAME": "ArtiOsStackClass"
+                    },
+                    {
+                        "NAME": "ArtiOsStackInstance"
+                    },
+                    {
+                        "NAME": "ArtiOsTaskClass"
+                    },
+                    {
+                        "NAME": "ArtiOsTaskInstance"
+                    }
+                ]
+            },
+            "ArtiOsAlarmClass":{
+                "INDEX": "10.4.5",
+                "CONTAINERS":[
+                    {
+                        "NAME": "ArtiOsAlarmClassGenericComponentClassRef"
+                    },
+                    {
+                        "NAME": "ArtiOsAlarmClassStateRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "ArtiOsAlarmInstance":{
+                "INDEX": "10.4.6",
+                "CONTAINERS":[
+                    {
+                        "NAME": "ArtiOsAlarmInstanceAction"
+                    },
+                    {
+                        "NAME": "ArtiOsAlarmInstanceCounter"
+                    },
+                    {
+                        "NAME": "ArtiOsAlarmInstanceAlarmTimeRef"
+                    },
+                    {
+                        "NAME": "ArtiOsAlarmInstanceCycleTimeRef"
+                    },
+                    {
+                        "NAME": "ArtiOsAlarmInstanceEcuCRef"
+                    },
+                    {
+                        "NAME": "ArtiOsAlarmInstanceGenericComponentInstanceRef"
+                    },
+                    {
+                        "NAME": "ArtiOsAlarmInstanceStateRef"
+                    },
+                    {
+                        "NAME": "ArtiOsAlarmInstanceValidRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "ArtiOsClass":{
+                "INDEX": "10.4.7",
+                "CONTAINERS":[
+                    {
+                        "NAME": "ArtiOsClassAppModeRef"
+                    },
+                    {
+                        "NAME": "ArtiOsClassGenericComponentRef"
+                    },
+                    {
+                        "NAME": "ArtiOsClassServiceTraceRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "ArtiOsContextClass":{
+                "INDEX": "10.4.8",
+                "CONTAINERS":[
+                    {
+                        "NAME": "ArtiOsContextClassGenericComponentClassRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "ArtiOsContextInstance":{
+                "INDEX": "10.4.9",
+                "CONTAINERS":[
+                    {
+                        "NAME": "ArtiOsContextInstanceAddressRef"
+                    },
+                    {
+                        "NAME": "ArtiOsContextInstanceGenericComponentInstanceRef"
+                    },
+                    {
+                        "NAME": "ArtiOsContextInstanceSizeRef"     
+                    },
+                    {
+                        "NAME": "ArtiOsContextInstanceValidRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "ArtiOsInstance":{
+                "INDEX": "10.4.10",
+                "CONTAINERS":[
+                    {
+                        "NAME": "ArtiOsInstanceAppModeRef"
+                    },
+                    {
+                        "NAME": "ArtiOsInstanceEcucRef"
+                    },
+                    {
+                        "NAME": "ArtiOsInstanceGenericComponentRef"     
+                    },
+                    {
+                        "NAME": "ArtiOsInstanceHookRef"
+                    },
+                    {
+                        "NAME": "ArtiOsInstanceServiceTraceRef"
+                    },
+                    {
+                        "NAME": "ArtiOsInstanceValidRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "ArtiOsIsrClass":{
+                "INDEX": "10.4.11",
+                "CONTAINERS":[
+                    {
+                        "NAME": "ArtiOsIsrClassGenericComponentRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "ArtiOsIsrInstance":{
+                "INDEX": "10.4.12",
+                "CONTAINERS":[
+                    {
+                        "NAME": "ArtiOsIsrInstanceCategory"
+                    },
+                    {
+                        "NAME": "ArtiOsIsrInstanceFunction"
+                    },
+                    {
+                        "NAME": "ArtiOsIsrInstanceId"
+                    },
+                    {
+                        "NAME": "ArtiOsIsrInstanceEcucRef"
+                    },
+                    {
+                        "NAME": "ArtiOsIsrInstanceGenericComponentRef"
+                    },
+                    {
+                        "NAME": "ArtiOsIsrInstanceValidRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "ArtiOsMessageContainerInstance":{
+                "INDEX": "10.4.14",
+                "CONTAINERS":[
+                    {
+                        "NAME": "ArtiOsMessageContainerInstanceMsgName"
+                    },
+                    {
+                        "NAME": "ArtiOsMessageContainerInstanceMsgType"
+                    },
+                    {
+                        "NAME": "ArtiOsMessageContainerInstanceFirstElementRef"
+                    },
+                    {
+                        "NAME": "ArtiOsMessageContainerInstanceGenericComponentInstanceRef"
+                    },
+                    {
+                        "NAME": "ArtiOsMessageContainerInstanceQueueCountRef"
+                    },
+                    {
+                        "NAME": "ArtiOsMessageContainerInstanceQueueSizeRef"
+                    },
+                    {
+                        "NAME": "ArtiOsMessageContainerInstanceValidRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "ArtiOsResourceClass":{
+                "INDEX": "10.4.15",
+                "CONTAINERS":[
+                    {
+                        "NAME": "ArtiOsResourceClassGenericComponentClassRef"
+                    },
+                    {
+                        "NAME": "ArtiOsResourceClassLockerRef"
+                    },
+                    {
+                        "NAME": "ArtiOsResourceClassStateRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "ArtiOsResourceInstance":{
+                "INDEX": "10.4.16",
+                "CONTAINERS":[
+                    {
+                        "NAME": "ArtiOsResourceInstancePriority"
+                    },
+                    {
+                        "NAME": "ArtiOsResourceInstanceEcuCRef"
+                    },
+                    {
+                        "NAME": "ArtiOsResourceInstanceGenericComponentInstanceRef"
+                    },
+                    {
+                        "NAME": "ArtiOsResourceInstanceLockerRef"
+                    },
+                    {
+                        "NAME": "ArtiOsResourceInstanceStateRef"
+                    },
+                    {
+                        "NAME": "ArtiOsResourceInstanceValidRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "ArtiOsStackClass":{
+                "INDEX": "10.4.17",
+                "CONTAINERS":[
+                    {
+                        "NAME": "ArtiOsStackClassGenericComponentClassRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "ArtiOsStackInstance":{
+                "INDEX": "10.4.18",
+                "CONTAINERS":[
+                    {
+                        "NAME": "ArtiOsStackInstanceDirection"
+                    },
+                    {
+                        "NAME": "ArtiOsStackInstanceBaseAddressRef"
+                    },
+                    {
+                        "NAME": "ArtiOsStackInstanceFillPatternRef"
+                    },
+                    {
+                        "NAME": "ArtiOsStackInstanceGenericComponentInstanceRef"
+                    },
+                    {
+                        "NAME": "ArtiOsStackInstanceSizeRef"
+                    },
+                    {
+                        "NAME": "ArtiOsStackInstanceValidRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "ArtiOsTaskClass":{
+                "INDEX": "10.4.19",
+                "CONTAINERS":[
+                    {
+                        "NAME": "ArtiOsTaskClassClassGenericComponentRef"
+                    },
+                    {
+                        "NAME": "ArtiOsTaskClassContextRef"
+                    },
+                    {
+                        "NAME": "ArtiOsTaskClassCurrentTaskStateRef"
+                    },
+                    {
+                        "NAME": "ArtiOsTaskClassPriorityRef"
+                    },
+                    {
+                        "NAME": "ArtiOsTaskClassStackRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            },
+            "ArtiOsTaskInstance":{
+                "INDEX": "10.4.20",
+                "CONTAINERS":[
+                    {
+                        "NAME": "ArtiOsTaskInstanceFunction"
+                    },
+                    {
+                        "NAME": "ArtiOsTaskInstanceId"
+                    },
+                    {
+                        "NAME": "ArtiOsTaskInstanceContextRef"
+                    },
+                    {
+                        "NAME": "ArtiOsTaskInstanceCurrentActivationsRef"
+                    },
+                    {
+                        "NAME": "ArtiOsTaskInstanceCurrentTaskStateRef"
+                    },
+                    {
+                        "NAME": "ArtiOsTaskInstanceEcucRef"
+                    },
+                    {
+                        "NAME": "ArtiOsTaskInstanceGenericComponentRef"
+                    },
+                    {
+                        "NAME": "ArtiOsTaskInstancePriorityRef"
+                    },
+                    {
+                        "NAME": "ArtiOsTaskInstanceStackRef"
+                    },
+                    {
+                        "NAME": "ArtiOsTaskInstanceValidRef"
+                    }
+                ],
+                "INCLUDED-CONTAINERS":[
+                ]
+            }
+        }
+    }
+}

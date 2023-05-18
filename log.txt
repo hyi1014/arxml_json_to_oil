@@ -1,0 +1,447 @@
+	OsStackSummary OsStackSummary {
+		OsStack OsCore0_Error {
+			OsStackSize = 1024
+			OsStackType = "CORE_ERROR_STACK"
+			OsStackCore = "/ActiveEcuC/Os/OsCore0"
+			OsStackUser = "/ActiveEcuC/Os/OsCore0"
+		}
+		OsStack OsCore0_Init {
+			OsStackSize = 1024
+			OsStackType = "CORE_INIT_STACK"
+			OsStackCore = "/ActiveEcuC/Os/OsCore0"
+			OsStackUser = "/ActiveEcuC/Os/OsCore0"
+		}
+		OsStack OsCore0_Kernel {
+			OsStackSize = 1024
+			OsStackType = "CORE_KERNEL_STACK"
+			OsStackCore = "/ActiveEcuC/Os/OsCore0"
+			OsStackUser = "/ActiveEcuC/Os/OsCore0"
+		}
+		OsStack OsCore0_Isr_Core {
+			OsStackSize = 2048
+			OsStackType = "ISR_SHARED_CORE_STACK"
+			OsStackCore = "/ActiveEcuC/Os/OsCore0"
+			OsStackUser = "/ActiveEcuC/Os/CounterIsr_SystemTimer"
+			OsStackUser = "/ActiveEcuC/Os/INTIIC0EE"
+			OsStackUser = "/ActiveEcuC/Os/INTIIC0RI"
+			OsStackUser = "/ActiveEcuC/Os/INTIIC0TEI"
+			OsStackUser = "/ActiveEcuC/Os/ADC0_SG1_CAT2_ISR"
+			OsStackUser = "/ActiveEcuC/Os/CanIsrStatus_0"
+			OsStackUser = "/ActiveEcuC/Os/CanIsrTx_0"
+			OsStackUser = "/ActiveEcuC/Os/EXT_INTP_CH07_CAT2_ISR"
+			OsStackUser = "/ActiveEcuC/Os/SPI_CSIH0_TIR_CAT2_ISR"
+			OsStackUser = "/ActiveEcuC/Os/SPI_CSIH3_TIR_CAT2_ISR"
+			OsStackUser = "/ActiveEcuC/Os/WDG_59_DRIVERA_TRIGGERFUNCTION_CAT2_ISR"
+			OsStackUser = "/ActiveEcuC/Os/SPI_CSIH2_TIR_CAT2_ISR"
+			OsStackUser = "/ActiveEcuC/Os/EXT_INTP_CH03_CAT2_ISR"
+			OsStackUser = "/ActiveEcuC/Os/TAUD0_CH00_CAT2_ISR"
+			OsStackUser = "/ActiveEcuC/Os/IRQDmaChannel2TransmitComplete"
+			OsStackUser = "/ActiveEcuC/Os/IRQDmaChannel5TransmitComplete"
+			OsStackUser = "/ActiveEcuC/Os/IRQDmaChannel5ReceiveComplete"
+			OsStackUser = "/ActiveEcuC/Os/TAUD0_CH02_CAT2_ISR"
+			OsStackUser = "/ActiveEcuC/Os/TAUD0_CH04_CAT2_ISR"
+			OsStackUser = "/ActiveEcuC/Os/TAUD0_CH01_CAT2_ISR"
+			OsStackUser = "/ActiveEcuC/Os/CanIsrGlobalRxFifo_0"
+			OsStackUser = "/ActiveEcuC/Os/CounterIsr_OsCounter_10ms"
+			OsStackUser = "/ActiveEcuC/Os/ADC1_SG1_CAT2_ISR"
+		}
+		OsStack OsCore0_Task_Prio4294967295 {
+			OsStackSize = 2048
+			OsStackType = "TASK_SHARED_PRIORITY_STACK"
+			OsStackCore = "/ActiveEcuC/Os/OsCore0"
+			OsStackUser = "/ActiveEcuC/Os/IdleTask_OsCore0"
+		}
+		OsStack OsTask_BswMainFunctions {
+			OsStackSize = 2048
+			OsStackType = "TASK_EXTENDED_STACK"
+			OsStackCore = "/ActiveEcuC/Os/OsCore0"
+			OsStackUser = "/ActiveEcuC/Os/OsTask_BswMainFunctions"
+		}
+		OsStack OsCore0_Task_Prio5 {
+			OsStackSize = 2048
+			OsStackType = "TASK_SHARED_PRIORITY_STACK"
+			OsStackCore = "/ActiveEcuC/Os/OsCore0"
+			OsStackUser = "/ActiveEcuC/Os/OsTask_Background"
+		}
+		OsStack OsCore0_Task_Prio1001 {
+			OsStackSize = 2048
+			OsStackType = "TASK_SHARED_PRIORITY_STACK"
+			OsStackCore = "/ActiveEcuC/Os/OsCore0"
+			OsStackUser = "/ActiveEcuC/Os/Default_Init_Task"
+		}
+		OsStack OsTask_ApplInitDeInit {
+			OsStackSize = 2048
+			OsStackType = "TASK_EXTENDED_STACK"
+			OsStackCore = "/ActiveEcuC/Os/OsCore0"
+			OsStackUser = "/ActiveEcuC/Os/OsTask_ApplInitDeInit"
+		}
+		OsStack OsTask_ApplMainFunctions {
+			OsStackSize = 2048
+			OsStackType = "TASK_EXTENDED_STACK"
+			OsStackCore = "/ActiveEcuC/Os/OsCore0"
+			OsStackUser = "/ActiveEcuC/Os/OsTask_ApplMainFunctions"
+		}
+		OsStack OsTask_Communication {
+			OsStackSize = 2048
+			OsStackType = "TASK_EXTENDED_STACK"
+			OsStackCore = "/ActiveEcuC/Os/OsCore0"
+			OsStackUser = "/ActiveEcuC/Os/OsTask_Communication"
+		}
+		OsStack OsTask_Dimming {
+			OsStackSize = 3072
+			OsStackType = "TASK_EXTENDED_STACK"
+			OsStackCore = "/ActiveEcuC/Os/OsCore0"
+			OsStackUser = "/ActiveEcuC/Os/OsTask_Dimming"
+		}
+		OsStack OsTask_SelfDiagnostics {
+			OsStackSize = 2048
+			OsStackType = "TASK_EXTENDED_STACK"
+			OsStackCore = "/ActiveEcuC/Os/OsCore0"
+			OsStackUser = "/ActiveEcuC/Os/OsTask_SelfDiagnostics"
+		}
+		OsStack OsTask_Touch {
+			OsStackSize = 2048
+			OsStackType = "TASK_EXTENDED_STACK"
+			OsStackCore = "/ActiveEcuC/Os/OsCore0"
+			OsStackUser = "/ActiveEcuC/Os/OsTask_Touch"
+		}
+		OsStack OsTask_ApplTimedInitDeInit {
+			OsStackSize = 2048
+			OsStackType = "TASK_EXTENDED_STACK"
+			OsStackCore = "/ActiveEcuC/Os/OsCore0"
+			OsStackUser = "/ActiveEcuC/Os/OsTask_ApplTimedInitDeInit"
+		}
+		OsStack OsTask_ApplVerify {
+			OsStackSize = 1024
+			OsStackType = "TASK_EXTENDED_STACK"
+			OsStackCore = "/ActiveEcuC/Os/OsCore0"
+			OsStackUser = "/ActiveEcuC/Os/OsTask_ApplVerify"
+		}
+		OsStack OsCore0_Shutdown {
+			OsStackSize = 1024
+			OsStackType = "CORE_SHUTDOWN_STACK"
+			OsStackCore = "/ActiveEcuC/Os/OsCore0"
+			OsStackUser = "/ActiveEcuC/Os/OsCore0"
+		}
+		OsStack OsTask_DcmSessionChanges {
+			OsStackSize = 3072
+			OsStackType = "TASK_EXTENDED_STACK"
+			OsStackCore = "/ActiveEcuC/Os/OsCore0"
+			OsStackUser = "/ActiveEcuC/Os/OsTask_DcmSessionChanges"
+		}
+		OsStack OsTask_NvmAccess {
+			OsStackSize = 1024
+			OsStackType = "TASK_EXTENDED_STACK"
+			OsStackCore = "/ActiveEcuC/Os/OsCore0"
+			OsStackUser = "/ActiveEcuC/Os/OsTask_NvmAccess"
+		}
+		OsStack OsCore0_Isr_Level1 {
+			OsStackSize = 2048
+			OsStackType = "ISR_SHARED_LEVEL_STACK"
+			OsStackCore = "/ActiveEcuC/Os/OsCore0"
+			OsStackUser = "/ActiveEcuC/Os/TAUD0_CH05_CAT2_ISR"
+		}
+	}
+OsPublishedInformation OsPublishedInformation {
+	OsKernelVersion = 7
+	OsPlatformName = "Rh850"
+	OsDerivativeInformation RH850F1KM {
+		OsMpuAlignment = 4
+		OsStackAlignment = 4
+		OsExceptionVectorTableAlignment = 512
+		OsInterruptVectorTableAlignment = 512
+		OsHardwareManuals = "RH850/F1KM Group Users Manual: Hardware  Rev.0.50 Jan 2017
+RH850G3KH Users Manual: Software  Rev.1.10 Jul 2016"
+		OsMpuEndAddressAccessible = True
+		OsMpuPrivilegedRegionsConfigurable = False
+		OsPhysicalCore CORE0 {
+			OsPhysicalCoreId = 0
+			OsPhysicalCoreExceptionSources = 16
+			OsPhysicalCoreIsAutostart = True
+			OsPhysicalCoreMasterStartAllowed = False
+			OsPhysicalCorePrivelegedHwAccess = True
+			OsPhysicalCoreDefaultEntrySymbol = "RESET_CORE0"
+			OsPhysicalCoreType = "G3KH"
+			OsPhysicalCoreStackProtectionUnit = "/ActiveEcuC/Os/OsPublishedInformation/RH850F1KM/CORE0/MPU_CORE0"
+			OsPhysicalCoreMpu MPU_CORE0 {
+				OsPhysicalCoreMpuId = 0
+				OsPhysicalCoreMpuMaxRegions = 16
+				OsPhysicalCoreMpuType = "CORE_MPU_G3X"
+			}
+		}
+		OsHardwareTimer OSTM0 {
+			OsHardwareTimerBaseAddress = 4292280320
+			OsHardwareTimerSize = 32
+			OsHardwareTimerId = 0
+			OsHardwareTimerUnit = "FRTPIT"
+			OsHardwareTimerType = "OSTM"
+			OsHardwareTimerChannel OSTM0 {
+				OsHardwareTimerChannelIntSource = 84
+				OsHardwareTimerChannelOffset = 0
+				OsHardwareTimerChannelId = 0
+			}
+		}
+		OsHardwareTimer TAUJ0 {
+			OsHardwareTimerBaseAddress = 4293197824
+			OsHardwareTimerSize = 32
+			OsHardwareTimerId = 0
+			OsHardwareTimerUnit = "PIT"
+			OsHardwareTimerType = "TAUJ"
+			OsHardwareTimerChannel TAUJ0_CH0 {
+				OsHardwareTimerChannelIntSource = 80
+				OsHardwareTimerChannelOffset = 0
+				OsHardwareTimerChannelId = 0
+			}
+			OsHardwareTimerChannel TAUJ0_CH1 {
+				OsHardwareTimerChannelIntSource = 81
+				OsHardwareTimerChannelOffset = 1
+				OsHardwareTimerChannelId = 1
+			}
+			OsHardwareTimerChannel TAUJ0_CH2 {
+				OsHardwareTimerChannelIntSource = 82
+				OsHardwareTimerChannelOffset = 2
+				OsHardwareTimerChannelId = 2
+			}
+			OsHardwareTimerChannel TAUJ0_CH3 {
+				OsHardwareTimerChannelIntSource = 83
+				OsHardwareTimerChannelOffset = 3
+				OsHardwareTimerChannelId = 3
+			}
+		}
+		OsHardwareTimer TAUJ1 {
+			OsHardwareTimerBaseAddress = 4293201920
+			OsHardwareTimerSize = 32
+			OsHardwareTimerId = 1
+			OsHardwareTimerUnit = "PIT"
+			OsHardwareTimerType = "TAUJ"
+			OsHardwareTimerChannel TAUJ1_CH0 {
+				OsHardwareTimerChannelIntSource = 168
+				OsHardwareTimerChannelOffset = 0
+				OsHardwareTimerChannelId = 0
+			}
+			OsHardwareTimerChannel TAUJ1_CH1 {
+				OsHardwareTimerChannelIntSource = 169
+				OsHardwareTimerChannelOffset = 1
+				OsHardwareTimerChannelId = 1
+			}
+			OsHardwareTimerChannel TAUJ1_CH2 {
+				OsHardwareTimerChannelIntSource = 170
+				OsHardwareTimerChannelOffset = 2
+				OsHardwareTimerChannelId = 2
+			}
+			OsHardwareTimerChannel TAUJ1_CH3 {
+				OsHardwareTimerChannelIntSource = 171
+				OsHardwareTimerChannelOffset = 3
+				OsHardwareTimerChannelId = 3
+			}
+		}
+		OsSystemIntCtrl INTC {
+			OsSystemIntCtrlBaseAddress = 4294896128
+			OsSystemIntCtrlMaxPrios = 16
+			OsSystemIntCtrlMaxSources = 376
+			OsSystemIntCtrlPrioOrder = "DESC"
+			OsSystemIntCtrlAddress INTC1 {
+				OsSystemIntCtrlAddressValue = 4294896128
+			}
+			OsSystemIntCtrlAddress INTC2 {
+				OsSystemIntCtrlAddressValue = 4294946816
+			}
+			OsSystemIntCtrlAddress EIBD1 {
+				OsSystemIntCtrlAddressValue = 0
+			}
+			OsSystemIntCtrlAddress EIBD2 {
+				OsSystemIntCtrlAddressValue = 0
+			}
+			OsSystemIntCtrlAddress IPIR {
+				OsSystemIntCtrlAddressValue = 0
+			}
+			OsSystemIntCtrlAddress TPTMSEL {
+				OsSystemIntCtrlAddressValue = 0
+			}
+		}
+		OsMemoryRegionSpecifics MPAT {
+			OsMemoryRegionAccess SR {
+				OsMemoryRegionAccessRights = "R"
+				OsMemoryRegionAccessType = "SUPERVISOR"
+			}
+			OsMemoryRegionAccess SW {
+				OsMemoryRegionAccessRights = "W"
+				OsMemoryRegionAccessType = "SUPERVISOR"
+			}
+			OsMemoryRegionAccess SX {
+				OsMemoryRegionAccessRights = "X"
+				OsMemoryRegionAccessType = "SUPERVISOR"
+			}
+			OsMemoryRegionAccess UR {
+				OsMemoryRegionAccessRights = "R"
+				OsMemoryRegionAccessType = "USER"
+			}
+			OsMemoryRegionAccess UW {
+				OsMemoryRegionAccessRights = "W"
+				OsMemoryRegionAccessType = "USER"
+			}
+			OsMemoryRegionAccess UX {
+				OsMemoryRegionAccessRights = "X"
+				OsMemoryRegionAccessType = "USER"
+			}
+		}
+		OsHardwareTimer TAUJ2 {
+			OsHardwareTimerBaseAddress = 4293198080
+			OsHardwareTimerSize = 32
+			OsHardwareTimerId = 2
+			OsHardwareTimerUnit = "PIT"
+			OsHardwareTimerType = "TAUJ"
+			OsHardwareTimerChannel TAUJ2_CH0 {
+				OsHardwareTimerChannelIntSource = 277
+				OsHardwareTimerChannelOffset = 0
+				OsHardwareTimerChannelId = 0
+			}
+			OsHardwareTimerChannel TAUJ2_CH1 {
+				OsHardwareTimerChannelIntSource = 278
+				OsHardwareTimerChannelOffset = 1
+				OsHardwareTimerChannelId = 1
+			}
+			OsHardwareTimerChannel TAUJ2_CH2 {
+				OsHardwareTimerChannelIntSource = 279
+				OsHardwareTimerChannelOffset = 2
+				OsHardwareTimerChannelId = 2
+			}
+			OsHardwareTimerChannel TAUJ2_CH3 {
+				OsHardwareTimerChannelIntSource = 280
+				OsHardwareTimerChannelOffset = 3
+				OsHardwareTimerChannelId = 3
+			}
+		}
+		OsHardwareTimer TAUJ3 {
+			OsHardwareTimerBaseAddress = 4293202176
+			OsHardwareTimerSize = 32
+			OsHardwareTimerId = 3
+			OsHardwareTimerUnit = "PIT"
+			OsHardwareTimerType = "TAUJ"
+			OsHardwareTimerChannel TAUJ3_CH0 {
+				OsHardwareTimerChannelIntSource = 281
+				OsHardwareTimerChannelOffset = 0
+				OsHardwareTimerChannelId = 0
+			}
+			OsHardwareTimerChannel TAUJ3_CH1 {
+				OsHardwareTimerChannelIntSource = 282
+				OsHardwareTimerChannelOffset = 1
+				OsHardwareTimerChannelId = 1
+			}
+			OsHardwareTimerChannel TAUJ3_CH2 {
+				OsHardwareTimerChannelIntSource = 283
+				OsHardwareTimerChannelOffset = 2
+				OsHardwareTimerChannelId = 2
+			}
+			OsHardwareTimerChannel TAUJ3_CH3 {
+				OsHardwareTimerChannelIntSource = 284
+				OsHardwareTimerChannelOffset = 3
+				OsHardwareTimerChannelId = 3
+			}
+		}
+		OsInterruptRouting OsInterruptRouting {
+			OsSELBINTC1BaseAddress = 4290777088
+			OsInterruptRoutingSource OsSELBINTC10 {
+				OsInterruptRoutingBit = 0
+				OsInterruptSourceAlternative = 116
+				OsInterruptSourceDefault = 16
+				OsInterruptRoutingRegister = "SELB_INTC1"
+			}
+			OsInterruptRoutingSource OsSELBINTC11 {
+				OsInterruptRoutingBit = 1
+				OsInterruptSourceAlternative = 117
+				OsInterruptSourceDefault = 17
+				OsInterruptRoutingRegister = "SELB_INTC1"
+			}
+			OsInterruptRoutingSource OsSELBINTC12 {
+				OsInterruptRoutingBit = 2
+				OsInterruptSourceAlternative = 118
+				OsInterruptSourceDefault = 27
+				OsInterruptRoutingRegister = "SELB_INTC1"
+			}
+			OsInterruptRoutingSource OsSELBINTC13 {
+				OsInterruptRoutingBit = 3
+				OsInterruptSourceAlternative = 119
+				OsInterruptSourceDefault = 28
+				OsInterruptRoutingRegister = "SELB_INTC1"
+			}
+			OsInterruptRoutingSource OsSELBINTC14 {
+				OsInterruptRoutingBit = 4
+				OsInterruptSourceAlternative = 132
+				OsInterruptSourceDefault = 8
+				OsInterruptRoutingRegister = "SELB_INTC1"
+			}
+			OsInterruptRoutingSource OsSELBINTC15 {
+				OsInterruptRoutingBit = 5
+				OsInterruptSourceAlternative = 133
+				OsInterruptSourceDefault = 10
+				OsInterruptRoutingRegister = "SELB_INTC1"
+			}
+			OsInterruptRoutingSource OsSELBINTC16 {
+				OsInterruptRoutingBit = 6
+				OsInterruptSourceAlternative = 134
+				OsInterruptSourceDefault = 11
+				OsInterruptRoutingRegister = "SELB_INTC1"
+			}
+			OsInterruptRoutingSource OsSELBINTC17 {
+				OsInterruptRoutingBit = 7
+				OsInterruptSourceAlternative = 135
+				OsInterruptSourceDefault = 12
+				OsInterruptRoutingRegister = "SELB_INTC1"
+			}
+			OsInterruptRoutingSource OsSELBINTC18 {
+				OsInterruptRoutingBit = 8
+				OsInterruptSourceAlternative = 158
+				OsInterruptSourceDefault = 9
+				OsInterruptRoutingRegister = "SELB_INTC1"
+			}
+			OsInterruptRoutingSource OsSELBINTC19 {
+				OsInterruptRoutingBit = 9
+				OsInterruptSourceAlternative = 159
+				OsInterruptSourceDefault = 13
+				OsInterruptRoutingRegister = "SELB_INTC1"
+			}
+			OsInterruptRoutingSource OsSELBINTC110 {
+				OsInterruptRoutingBit = 10
+				OsInterruptSourceAlternative = 160
+				OsInterruptSourceDefault = 14
+				OsInterruptRoutingRegister = "SELB_INTC1"
+			}
+			OsInterruptRoutingSource OsSELBINTC111 {
+				OsInterruptRoutingBit = 11
+				OsInterruptSourceAlternative = 161
+				OsInterruptSourceDefault = 15
+				OsInterruptRoutingRegister = "SELB_INTC1"
+			}
+			OsInterruptRoutingSource OsSELBINTC112 {
+				OsInterruptRoutingBit = 12
+				OsInterruptSourceAlternative = 32
+				OsInterruptSourceDefault = 20
+				OsInterruptRoutingRegister = "SELB_INTC1"
+			}
+		}
+		OsInterruptSupportedType ROUTED {
+			OsInterruptSupportedTypeSeparateSources = False
+			OsInterruptSupportedTypeSeparatePriority = False
+			OsInterruptSupportedTypeIsMapped = False
+			OsInterruptSupportedTypePostActionRequired = False
+		}
+	}
+}
+OsCore OsCore0 {
+	OsCoreIsAutostart = True
+	OsCoreIsAutosar = True
+	OsCoreEntrySymbol = "RESET_CORE0"
+	OsCorePhysicalCoreRef = "/ActiveEcuC/Os/OsPublishedInformation/RH850F1KM/CORE0"
+	OsCoreEcucCoreRef = "/ActiveEcuC/EcuC/EcucHardware/EcucCoreDefinition"
+	OsCoreIdleTask = "/ActiveEcuC/Os/IdleTask_OsCore0"
+	OsCoreSystemApplication = "/ActiveEcuC/Os/SystemApplication_OsCore0"
+	OsCoreStacks OsCoreStacks {
+		OsCoreKernelStackSize = 1024
+		OsCoreStartupStackSize = 1024
+		OsCoreShutdownStackSize = 1024
+		OsCoreErrorStackSize = 1024
+		OsCoreProtectionStackSize = 1024
+		OsCoreInitStackSize = 1024
+	}
+}
